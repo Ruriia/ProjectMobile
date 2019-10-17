@@ -7,10 +7,25 @@
     tools:context=".LandingLogin"
     android:background="#E5E5E5">
 
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="200dp">
 
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/company"
+            android:layout_marginTop="210dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
