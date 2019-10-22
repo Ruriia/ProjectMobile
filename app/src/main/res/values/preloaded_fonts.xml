@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/overlock</item>
+        <item>@font/overlock_black</item>
+        <item>@font/overlock_bold</item>
+        <item>@font/overlock_italic</item>
+    </array>
+</resources>
