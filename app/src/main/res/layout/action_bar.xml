@@ -2,49 +2,77 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     android:gravity = "center_vertical"
     android:padding = "10dp"
     android:weightSum = "1">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.6"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:background="#FBFBFB">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_menu" />
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="40sp"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/logo_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_menu" />
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.4"
+            android:gravity="end"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal"></LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="40sp"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:textAlignment="textStart"
-            app:srcCompat="@drawable/logoHorizontal" />
+            <ImageView
+                android:id="@+id/btnSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_search" />
 
+            <ImageView
+                android:id="@+id/btnNotif"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_notif" />
+
+            <ImageView
+                android:id="@+id/btnTrack"
+                android:layout_width="110sp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_track" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width = "0dp"
-        android:layout_height = "match_parent"
-        android:layout_marginRight = "10dp"
-        android:layout_weight = "0.4"
-        android:gravity = "end">
-        <ImageView
-            android:layout_width = "wrap_content"
-            android:layout_height = "match_parent"
-            android:src = "@drawable/ic_local_post_office_red_400_24dp" />
-        <ImageView
-            android:layout_width = "wrap_content"
-            android:layout_height = "match_parent"
-            android:layout_marginLeft = "20dp"
-            android:src = "@drawable/ic_send_red_400_24dp" />
-    </LinearLayout>
+
 </LinearLayout>
