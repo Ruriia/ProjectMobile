@@ -1,4 +1,41 @@
 <resources>
     <string name="app_name">Online_Cargo</string>
     <string name="company">PT. Global Cargo Indonesia</string>
+    <string-array name="provinsi">
+        <item>Select Province</item>
+        <item>DKI Jakarta</item>
+        <item>Jawa Barat</item>
+        <item>Jawa Tengah</item>
+        <item>DI Yogyakarta</item>
+        <item>Jawa Timur</item>
+        <item>Aceh</item>
+        <item>Sumatera Utara</item>
+        <item>Sumatera Barat</item>
+        <item>Riau</item>
+        <item>Jambi</item>
+        <item>Sumatera Selatan</item>
+        <item>Lampung</item>
+        <item>Kalimantan Barat</item>
+        <item>Kalimantan Tengah</item>
+        <item>Kalimantan Selatan</item>
+        <item>Kalimantan Timur</item>
+        <item>Sulawesi Utara</item>
+        <item>Sulawesi Tengah</item>
+        <item>Sulawesi Selatan</item>
+        <item>Sulawesi Tenggara</item>
+        <item>Maluku</item>
+        <item>Bali</item>
+        <item>Nusa Tenggara Barat</item>
+        <item>Nusa Tenggara Timur</item>
+        <item>Papua</item>
+        <item>Bengkulu</item>
+        <item>Maluku Utara</item>
+        <item>Bangka Belitung</item>
+        <item>Gorontalo</item>
+        <item>Banten</item>
+        <item>Kepulauan Riau</item>
+        <item>Sulawesi Barat</item>
+        <item>Papua Barat</item>
+        <item>Kalimantan Utara</item>
+    </string-array>
 </resources>
