@@ -39,7 +39,8 @@
                     android:textAlignment="center"
                     android:textColor="#ffffff"
                     android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,16 +56,18 @@
                         android:text="Company Name"
                         android:textColor="#ffffff"
                         android:textSize="18dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"/>
 
                     <EditText
                         android:id="@+id/editText6"
-                        android:layout_width="190dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:layout_marginRight="20dp"/>
 
                 </LinearLayout>
 
@@ -82,15 +85,17 @@
                         android:text="E-mail"
                         android:textColor="#ffffff"
                         android:textSize="18dp"
+                        android:layout_marginLeft="20dp"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/editText3"
-                        android:layout_width="190dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
+                        android:layout_marginRight="20dp"
                         android:inputType="textEmailAddress" />
                 </LinearLayout>
 
@@ -108,16 +113,18 @@
                         android:text="Password"
                         android:textColor="#ffffff"
                         android:textSize="18dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"/>
 
                     <EditText
                         android:id="@+id/editText4"
-                        android:layout_width="190dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:layout_marginRight="20dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -134,16 +141,18 @@
                         android:text="Confirm Password"
                         android:textColor="#ffffff"
                         android:textSize="18dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"/>
 
                     <EditText
                         android:id="@+id/editText5"
-                        android:layout_width="190dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
-                        android:inputType="textPassword" />
+                        android:inputType="textPassword"
+                        android:layout_marginRight="20dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -157,19 +166,21 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Company Telephone Number"
+                        android:text="Company Phone"
                         android:textColor="#ffffff"
                         android:textSize="18dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"/>
 
                     <EditText
                         android:id="@+id/editText7"
-                        android:layout_width="190dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
-                        android:inputType="phone" />
+                        android:inputType="phone"
+                        android:layout_marginRight="20dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -186,15 +197,17 @@
                         android:text="Province"
                         android:textColor="#ffffff"
                         android:textSize="18dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"/>
 
                     <Spinner
                         android:id="@+id/spinner"
-                        android:layout_width="190dp"
+                        android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_corner"
-                        android:entries="@array/provinsi" />
+                        android:entries="@array/provinsi"
+                        android:layout_marginRight="20dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -208,21 +221,50 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Address Line 1"
+                        android:text="Address"
                         android:textColor="#ffffff"
                         android:textSize="18dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"/>
 
                     <EditText
                         android:id="@+id/editText10"
-                        android:layout_width="190dp"
+                        android:layout_width="160dp"
                         android:layout_height="100dp"
                         android:layout_weight="1"
                         android:background="@drawable/rounded_corner"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:inputType="textMultiLine" />
+                        android:inputType="textMultiLine"
+                        android:layout_marginRight="20dp"/>
 
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="100dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ZIP Code"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:textStyle="bold"/>
+
+                    <EditText
+                        android:id="@+id/editText11"
+                        android:layout_width="160dp"
+                        android:background="@drawable/rounded_corner"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:layout_marginRight="20dp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -240,7 +282,8 @@
                         android:shadowColor="#000000"
                         android:text="By clicking this button, you agree to all of our Terms and Data Policy"
                         android:textColor="#ffffff"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:layout_marginLeft="20dp"/>
 
                 </LinearLayout>
 
@@ -261,6 +304,8 @@
 
                         />
                 </RelativeLayout>
+
+
 
             </LinearLayout>
         </LinearLayout>
