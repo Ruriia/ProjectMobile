@@ -13,7 +13,7 @@ public class SplashLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_login);
 
-        final int loading_time = 3000;
+        final int loading_time = 1500;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

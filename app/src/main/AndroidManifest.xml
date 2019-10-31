@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".ActivityLoader"></activity>
+        <activity android:name=".TrackActivity" />
+        <activity android:name=".DetailActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".DetailProduct" />
         <activity android:name=".ProductPage" />
@@ -17,9 +19,7 @@
         <activity android:name=".AllTrackingActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".HomeActivity">
-
-        </activity>
+        <activity android:name=".HomeActivity" />
         <activity android:name=".SplashLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
