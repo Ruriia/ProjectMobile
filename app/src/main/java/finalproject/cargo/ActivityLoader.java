@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class ActivityLoader extends AppCompatActivity {
 
     @Override
@@ -29,6 +31,7 @@ public class ActivityLoader extends AppCompatActivity {
         //MenuInflater inflater = getMenuInflater();
         //inflater.inflate(R.menu.botnavbar, );
 
+        BottomNavigationView botnav = findViewById(R.id.bottom_navigation);
     }
 
 

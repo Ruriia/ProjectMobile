@@ -6,26 +6,30 @@
         android:icon="@drawable/homehdpi"
         android:enabled="true"
         android:title="Home"
-        app:showAsAction="always" />
+
+        />
 
     <item
         android:id="@+id/action_product"
         android:icon="@drawable/productshdpi"
         android:enabled="true"
         android:title="Products"
-        app:showAsAction="always"/>
+        android:iconTintMode="screen"
+        android:iconTint="@color/colorPrimaryGreen"
+        />
 
     <item
         android:id="@+id/action_services"
         android:icon="@drawable/services_1hdpi"
         android:enabled="true"
         android:title="Services"
-        app:showAsAction="always"/>
+        />
 
     <item
         android:id="@+id/action_account"
         android:icon="@drawable/accounthdpi"
         android:enabled="true"
         android:title="Accounts"
-        app:showAsAction="always"/>
+
+        />
 </menu>
