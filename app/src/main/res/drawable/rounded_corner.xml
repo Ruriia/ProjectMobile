@@ -45,7 +45,7 @@
                 android:width="0.7dp"
                 android:color="#BDBDBD" />
             <corners
-                android:radius="8dp" />
+                android:radius="12dp" />
         </shape>
     </item>
 

@@ -4,6 +4,7 @@
     <color name="colorPrimaryBlue">#6AC1FF</color>
     <color name="colorDarkBlue">#2C3644</color>
     <color name="colorGray">#F9F8FB</color>
+    <color name="colorNegative">#DE4949</color>
 
     <color name="colorAccent">@color/colorPrimaryBlue</color>
 </resources>
