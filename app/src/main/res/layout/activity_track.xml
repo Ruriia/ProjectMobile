@@ -117,17 +117,18 @@
                     android:textSize="22sp" />
 
                 <Button
+                    android:id="@+id/back"
                     android:layout_width="100sp"
                     android:layout_height="28sp"
                     android:layout_gravity="end|center_vertical"
                     android:background="@drawable/rounded_corner"
                     android:backgroundTint="@color/colorNegative"
-                    android:text="Back"
-                    android:textColor="@color/colorGray"
-                    android:textAllCaps="false"
                     android:fontFamily="@font/overlock_bold"
-                    android:textSize="16sp"
-                    android:textAlignment="center" />
+                    android:text="Back"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorGray"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <LinearLayout

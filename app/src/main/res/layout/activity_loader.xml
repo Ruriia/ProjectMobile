@@ -17,13 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/welcome_gradient"
-            app:itemTextColor="@android:color/white"
-            app:itemIconTint="@android:color/white"
+            android:background="@drawable/roundednavbar"
+            app:itemTextColor="@drawable/statebnv"
+            app:itemIconTint="@drawable/statebnv"
             app:menu="@menu/botnavbar"
             app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
             app:itemTextAppearanceInactive="@style/BottomNavigationView"
-
+            android:layout_marginTop="10dp"
             />
 
         <LinearLayout
@@ -37,7 +37,9 @@
                 android:layout_height="wrap_content"
                 android:background="#FBFBFB"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="10dp"
+
+                >
 
                 <LinearLayout
                     android:layout_width="0dp"

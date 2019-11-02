@@ -9,14 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityLoader"></activity>
+        <activity android:name=".AccountActivity"></activity>
+        <activity android:name=".ServiceActivity" />
+        <activity android:name=".ActivityLoader" />
         <activity android:name=".TrackActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".DetailProduct" />
         <activity android:name=".ProductPage" />
         <activity android:name=".DetailTracking" />
-        <activity android:name=".AllTrackingActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />

@@ -38,4 +38,6 @@
         <item>Papua Barat</item>
         <item>Kalimantan Utara</item>
     </string-array>
+
+    <string name="loremipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dignissim sapien ex, nec porttitor sem congue quis. Phasellus nec enim quis mi ornare ultricies. Nunc eu ipsum ante. Mauris feugiat consequat velit eu viverra. Nunc sollicitudin dolor quis semper aliquet. Nullam aliquam, ligula eu tempus dapibus, nunc sapien porttitor lectus, egestas suscipit velit nisi in odio. Nulla lobortis turpis id tellus ornare, vitae fringilla diam tristique.</string>
 </resources>
