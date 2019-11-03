@@ -33,7 +33,7 @@ public class ActivityLoader extends AppCompatActivity implements BottomNavigatio
         track.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent trackpage = new Intent(getApplicationContext(), TrackActivity.class);
+                Intent trackpage = new Intent(getApplicationContext(), TrackLists.class);
                 startActivity(trackpage);
             }
         });

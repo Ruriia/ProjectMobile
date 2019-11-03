@@ -37,23 +37,26 @@
                 android:layout_height="wrap_content"
                 android:background="#FBFBFB"
                 android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-
-                >
+                android:paddingBottom="10dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
+                    android:layout_weight="1"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_menu" />
 
                     <ImageView
                         android:id="@+id/imageView2"
                         android:layout_width="match_parent"
-                        android:layout_height="40sp"
+                        android:layout_height="45sp"
                         android:layout_gravity="start"
+                        android:layout_marginLeft="10dp"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/logo_horizontal" />
 
@@ -62,25 +65,34 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="12dp"
-                    android:layout_weight="0.4"
-                    android:gravity="end">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <EditText
-                        android:id="@+id/searchBox"
-                        android:layout_width="wrap_content"
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="7dp"
-                        android:layout_weight="2"
-                        android:ems="10"
-                        android:hint="Search here"
-                        android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner_searchbox"
+                        android:backgroundTint="@android:color/white"
+                        android:elevation="2dp"
+                        android:searchIcon="@drawable/ic_search"></SearchView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight=".5"
+                    android:gravity="end">
 
                     <ImageButton
                         android:id="@+id/btnNotif"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_gravity="end"
                         android:layout_marginLeft="7dp"
                         android:layout_weight="1"
                         android:background="#FBFBFB"
@@ -88,8 +100,9 @@
 
                     <ImageButton
                         android:id="@+id/btnTrack"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_gravity="end"
                         android:layout_marginLeft="7dp"
                         android:layout_weight="1"
                         android:background="#FBFBFB"
@@ -115,6 +128,14 @@
                  -->
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:id="@+id/shadow"
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_above="@+id/toolBar"
+                android:background="@drawable/shadows">
+            </View>
 
             <ScrollView
                 android:layout_width="match_parent"

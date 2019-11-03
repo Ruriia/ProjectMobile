@@ -15,7 +15,7 @@ public class TrackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
 
-        ImageButton track = findViewById(R.id.btnTracktrack);
+        ImageButton track = findViewById(R.id.btnTrack);
         track.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
