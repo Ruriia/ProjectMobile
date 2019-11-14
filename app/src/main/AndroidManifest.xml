@@ -20,8 +20,10 @@
         <activity android:name="com.cargoo.DetailProduct" />
         <activity android:name="com.cargoo.ProductPage" />
         <activity android:name="com.cargoo.DetailTracking" />
-        <activity android:name="com.cargoo.RegisterActivity" />
-        <activity android:name="com.cargoo.LoginActivity" />
+        <activity android:name="com.cargoo.RegisterActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.cargoo.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.cargoo.HomeActivity" />
         <activity android:name="com.cargoo.SplashLogin">
             <intent-filter>
