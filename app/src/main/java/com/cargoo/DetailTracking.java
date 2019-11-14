@@ -1,14 +1,14 @@
-package finalproject.cargo;
+package com.cargoo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DetailProduct extends AppCompatActivity {
+public class DetailTracking extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_product);
+        setContentView(R.layout.activity_detail_tracking);
     }
 }

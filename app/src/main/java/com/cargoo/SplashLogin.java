@@ -1,4 +1,4 @@
-package finalproject.cargo;
+package com.cargoo;
 
 import androidx.appcompat.app.AppCompatActivity;
 

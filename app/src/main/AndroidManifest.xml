@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="finalproject.cargo">
+    package="com.cargoo">
 
     <application
         android:allowBackup="true"
@@ -9,21 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccountSetting"></activity>
-        <activity android:name=".TrackLists" />
-        <activity android:name=".AccountActivity" />
-        <activity android:name=".ServiceActivity" />
-        <activity android:name=".ActivityLoader" />
-        <activity android:name=".TrackActivity" />
-        <activity android:name=".DetailActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".DetailProduct" />
-        <activity android:name=".ProductPage" />
-        <activity android:name=".DetailTracking" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".SplashLogin">
+        <activity android:name="com.cargoo.AccountSetting"></activity>
+        <activity android:name="com.cargoo.TrackLists" />
+        <activity android:name="com.cargoo.AccountActivity" />
+        <activity android:name="com.cargoo.ServiceActivity" />
+        <activity android:name="com.cargoo.ActivityLoader" />
+        <activity android:name="com.cargoo.TrackActivity" />
+        <activity android:name="com.cargoo.DetailActivity" />
+        <activity android:name="com.cargoo.HistoryActivity" />
+        <activity android:name="com.cargoo.DetailProduct" />
+        <activity android:name="com.cargoo.ProductPage" />
+        <activity android:name="com.cargoo.DetailTracking" />
+        <activity android:name="com.cargoo.RegisterActivity" />
+        <activity android:name="com.cargoo.LoginActivity" />
+        <activity android:name="com.cargoo.HomeActivity" />
+        <activity android:name="com.cargoo.SplashLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
