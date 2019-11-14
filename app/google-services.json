@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "337271872961",
+    "firebase_url": "https://cargoo-d9aa1.firebaseio.com",
+    "project_id": "cargoo-d9aa1",
+    "storage_bucket": "cargoo-d9aa1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337271872961:android:0f9361cccfe9ef98da2340",
+        "android_client_info": {
+          "package_name": "com.cargoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337271872961-offt6005mh7miic7senaohqmca1p3mik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCldnuxk1twp6FRa8mY9JGl88GWFlR-sHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337271872961-offt6005mh7miic7senaohqmca1p3mik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
