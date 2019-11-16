@@ -31,7 +31,7 @@
                 android:textSize="22sp" />
 
             <Button
-                android:id="@+id/back"
+                android:id="@+id/btnBack"
                 android:layout_width="100sp"
                 android:layout_height="30sp"
                 android:layout_gravity="end|center_vertical"
