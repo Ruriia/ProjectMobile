@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -46,16 +47,40 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView26"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="143dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#90999696"
-            android:gravity="center"
-            android:text="SLIDESHOW"
-            android:textSize="24sp" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:src="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TxtDelivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Delivery dengan banyak pilihan dan terjamin serta memiliki pilihan harga yang terjangkau." />
+
+                <Button
+                    android:id="@+id/btnDelivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery Now" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
