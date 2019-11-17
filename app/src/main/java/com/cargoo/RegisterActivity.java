@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        TextView back = findViewById(R.id.back);
+        TextView back = findViewById(R.id.btnBack);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
