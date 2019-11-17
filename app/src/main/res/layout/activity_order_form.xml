@@ -15,13 +15,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="15dp">
 
             <LinearLayout
+                android:id="@+id/titleShipment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp">
 
                 <TextView
                     android:id="@+id/txtShipment"
@@ -53,38 +57,29 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="PENGIRIM"
-                    android:textColor="#020000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/dataPengirim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Data Pengirim"
+                    android:textColor="@color/colorPrimaryBlue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/textView29"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Name" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Nama pengirim" />
 
                 <EditText
                     android:id="@+id/edtNamaPengirim"
@@ -92,15 +87,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Insert your company's name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords" />
 
                 <TextView
                     android:id="@+id/textView30"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Phone number" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Telp pengirim" />
 
                 <EditText
                     android:id="@+id/edtTelpPengirim"
@@ -108,15 +103,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Insert your company's phone number"
-                    android:inputType="textPersonName" />
+                    android:inputType="phone" />
 
                 <TextView
                     android:id="@+id/textView31"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Destination company's name" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Email pengirim" />
 
                 <EditText
                     android:id="@+id/edtPerusahaanPengirim"
@@ -124,242 +119,115 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Insert destination company's name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textEmailAddress" />
 
                 <TextView
                     android:id="@+id/textView32"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Destination company's phone" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Alamat pengirim" />
 
                 <EditText
-                    android:id="@+id/edtTelpPerusahaanPengirim"
+                    android:id="@+id/edtAlamatPengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Insert destination company's phone"
-                    android:inputType="textPersonName" />
+                    android:inputType="textMultiLine"
+                    android:lines="3" />
 
                 <TextView
                     android:id="@+id/textView33"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Destination company's address" />
-
-                <Spinner
-                    android:id="@+id/spinCountryPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp" />
-
-                <Spinner
-                    android:id="@+id/spinProvincePegirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp" />
-
-                <Spinner
-                    android:id="@+id/spinStatePengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Provinsi pengirim" />
 
                 <EditText
-                    android:id="@+id/codePengirim"
+                    android:id="@+id/edtProvinsiPengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="ZIP Code"
-                    android:inputType="textPersonName" />
-
-                <EditText
-                    android:id="@+id/addressPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:hint="Full address"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords" />
 
                 <TextView
-                    android:id="@+id/textView35"
+                    android:id="@+id/textView43"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Item's detail"
-                    android:textColor="#0E0101"
-                    android:textSize="18sp" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Kota pengirim" />
 
                 <EditText
-                    android:id="@+id/editText7"
+                    android:id="@+id/edtKotaPengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Insert item's name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textView44"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView36"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Item's amound" />
-
-                    <TextView
-                        android:id="@+id/textView37"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Packaging" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editText10"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Insert"
-                        android:textColor="#6B6969" />
-
-                    <Spinner
-                        android:id="@+id/spinner4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView38"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Weight (in meters)" />
-
-                    <TextView
-                        android:id="@+id/textView39"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Width (in meters)" />
-
-                    <TextView
-                        android:id="@+id/textView40"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Height (in meters)" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editText12"
-                        android:layout_width="227dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:lineSpacingExtra="8sp"
-                        android:nestedScrollingEnabled="false"
-                        android:outlineProvider="none"
-                        android:singleLine="false" />
-
-                    <EditText
-                        android:id="@+id/editText13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
-
-                    <EditText
-                        android:id="@+id/editText14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/CBFragile"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Fragile"
-                    android:textColor="#0E0C0C"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Kecamatan pengirim" />
+
+                <EditText
+                    android:id="@+id/edtKecamatanPengirim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="textCapWords" />
+
+                <TextView
+                    android:id="@+id/textView45"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Kode pos pengirim" />
+
+                <EditText
+                    android:id="@+id/edtKodePosPengirim"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/dataPenerima"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView25"
+                    android:id="@+id/titleDataPenerima"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="PENERIMA"
-                    android:textColor="#000000"
+                    android:text="Data Penerima"
+                    android:textColor="@color/colorPrimaryBlue"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/textView46"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Name"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Nama penerima" />
 
                 <EditText
                     android:id="@+id/edtNamaPenerima"
@@ -367,16 +235,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Yout company name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords" />
 
                 <TextView
-                    android:id="@+id/textView28"
+                    android:id="@+id/textView47"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Phone number"
-                    android:textSize="14sp" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Telp penerima" />
 
                 <EditText
                     android:id="@+id/edtTelpPenerima"
@@ -384,96 +251,381 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Insert your destination company's name"
-                    android:inputType="textPersonName" />
+                    android:inputType="phone" />
 
                 <TextView
-                    android:id="@+id/textView34"
+                    android:id="@+id/textView48"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Destiantion companny'a name"
-                    android:textSize="14sp" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Email penerima" />
 
                 <EditText
-                    android:id="@+id/edtPerusahaanPenerima"
+                    android:id="@+id/edtEmailPenerima"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Insert the destination company's name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textEmailAddress" />
 
                 <TextView
-                    android:id="@+id/textView41"
+                    android:id="@+id/textView49"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Destination company's phone"
-                    android:textSize="14sp" />
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Alamat penerima" />
 
                 <EditText
-                    android:id="@+id/edtTelpPerusahaanPenerima"
+                    android:id="@+id/edtAlamatPenerima"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:hint="Insert the destination company's phone"
-                    android:inputType="textPersonName" />
+                    android:inputType="textMultiLine"
+                    android:lines="3" />
+
+                <TextView
+                    android:id="@+id/textView50"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Provinsi penerima" />
+
+                <EditText
+                    android:id="@+id/edtProvinsiPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="textCapWords" />
+
+                <TextView
+                    android:id="@+id/textView51"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Kota penerima" />
+
+                <EditText
+                    android:id="@+id/edtKotaPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="textCapWords" />
+
+                <TextView
+                    android:id="@+id/textView52"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Kecamatan penerima" />
+
+                <EditText
+                    android:id="@+id/edtKecamatanPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="textCapWords" />
+
+                <TextView
+                    android:id="@+id/textView53"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Kode Pos Pengirim" />
+
+                <EditText
+                    android:id="@+id/edtKodePosPenerima"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:id="@+id/dataBarang"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titleDataBarang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Data Barang"
+                    android:textColor="@color/colorPrimaryBlue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView54"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:text="Nama barang" />
+
+                <EditText
+                    android:id="@+id/edtNamaBarang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="textCapSentences" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textView42"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Destination company's address" />
+                        android:orientation="vertical"
+                        android:layout_marginRight="10dp">
 
-                    <Spinner
-                        android:id="@+id/spinCountryPenerima"
-                        android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/textView55"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Quantity" />
+
+                        <EditText
+                            android:id="@+id/edtQuantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:ems="10"
+                            android:inputType="number" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp" />
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp">
 
-                    <Spinner
-                        android:id="@+id/spinProvicePenerima"
-                        android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/textView56"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Unit" />
+
+                        <Spinner
+                            android:id="@+id/spinUnit"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="10dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp" />
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp">
 
-                    <Spinner
-                        android:id="@+id/spinStatePenerima"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp" />
+                        <TextView
+                            android:id="@+id/textView63"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Weight" />
 
-                    <EditText
-                        android:id="@+id/codePenerima"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:ems="10"
-                        android:hint="ZIP Code"
-                        android:inputType="textPersonName" />
+                        <EditText
+                            android:id="@+id/edtWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:hint="per unit in kg"
+                            android:fontFamily="@font/nunito_light"
+                            android:textSize="14sp"/>
 
-                    <EditText
-                        android:id="@+id/addressPenerima"
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="103dp"
-                        android:layout_marginTop="10dp"
-                        android:ems="10"
-                        android:hint="Full Address"
-                        android:inputType="textPersonName" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp">
+
+                        <TextView
+                            android:id="@+id/textView57"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Width" />
+
+                        <TextView
+                            android:id="@+id/textView58"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="per unit in meter"
+                            android:textSize="8sp"/>
+
+                        <EditText
+                            android:id="@+id/edtWidth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:ems="10"
+                            android:inputType="number" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp">
+
+                        <TextView
+                            android:id="@+id/textView59"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Length" />
+
+                        <TextView
+                            android:id="@+id/textView60"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="per unit in meter"
+                            android:textSize="8sp"/>
+
+                        <EditText
+                            android:id="@+id/edtLength"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:ems="10"
+                            android:inputType="number" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginRight="5dp">
+
+                        <TextView
+                            android:id="@+id/textView61"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Height" />
+
+                        <TextView
+                            android:id="@+id/textView62"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="per unit in meter"
+                            android:textSize="8sp"/>
+
+                        <EditText
+                            android:id="@+id/edtHeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:ems="10"
+                            android:inputType="number" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/checkBox2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Fragile"
+                            android:fontFamily="@font/nunito_semibold"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="We charge additional cost for fragile item by make wood packaging for it."
+                            android:textSize="8sp"
+                            android:layout_marginStart="7dp"
+                            android:fontFamily="@font/nunito_light"/>
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="445dp"
+                android:id="@+id/Pengiriman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titlePengirimanBarang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Tanggal Pengiriman"
+                    android:textColor="@color/colorPrimaryBlue"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtTglPengiriman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="date" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:layout_margin="10dp"
@@ -481,25 +633,25 @@
 
                 <Button
                     android:id="@+id/btnCancel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:text="Cancel" />
 
                 <Button
                     android:id="@+id/btnAddItem"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Add Item" />
+                    android:text="+ Moretem" />
 
                 <Button
                     android:id="@+id/btnDone"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:text="Done" />
 

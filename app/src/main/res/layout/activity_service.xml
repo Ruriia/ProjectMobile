@@ -9,21 +9,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/txtShipment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/overlock_bold"
                 android:text="Service"
@@ -35,7 +33,6 @@
                 android:layout_width="100sp"
                 android:layout_height="30sp"
                 android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="10dp"
                 android:background="@drawable/rounded_corner"
                 android:backgroundTint="@color/colorNegative"
                 android:fontFamily="@font/overlock_bold"
@@ -51,9 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="30dp">
 
             <ImageView
                 android:id="@+id/imageView7"
