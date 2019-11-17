@@ -55,9 +55,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PENGIRIM"
+                    android:textColor="#020000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -74,7 +87,7 @@
                     android:text="Name" />
 
                 <EditText
-                    android:id="@+id/edtNama"
+                    android:id="@+id/edtNamaPengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -90,7 +103,7 @@
                     android:text="Phone number" />
 
                 <EditText
-                    android:id="@+id/edtTelp"
+                    android:id="@+id/edtTelpPengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -106,7 +119,7 @@
                     android:text="Destination company's name" />
 
                 <EditText
-                    android:id="@+id/edtNamaPerusahaan"
+                    android:id="@+id/edtPerusahaanPengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -122,7 +135,7 @@
                     android:text="Destination company's phone" />
 
                 <EditText
-                    android:id="@+id/edtTelpPerusahaan"
+                    android:id="@+id/edtTelpPerusahaanPengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -138,25 +151,25 @@
                     android:text="Destination company's address" />
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/spinCountryPengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp" />
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/spinProvincePegirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp" />
 
                 <Spinner
-                    android:id="@+id/spinner3"
+                    android:id="@+id/spinStatePengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp" />
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/codePengirim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -165,9 +178,9 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/editText9"
+                    android:id="@+id/addressPengirim"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="90dp"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:hint="Full address"
@@ -178,7 +191,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Item's detail" />
+                    android:text="Item's detail"
+                    android:textColor="#0E0101"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/editText7"
@@ -200,13 +215,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Item's " />
+                        android:gravity="center"
+                        android:text="Item's amound" />
 
                     <TextView
                         android:id="@+id/textView37"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="Packaging" />
                 </LinearLayout>
 
@@ -223,7 +240,8 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="Insert" />
+                        android:text="Insert"
+                        android:textColor="#6B6969" />
 
                     <Spinner
                         android:id="@+id/spinner4"
@@ -277,7 +295,11 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:lineSpacingExtra="8sp"
+                        android:nestedScrollingEnabled="false"
+                        android:outlineProvider="none"
+                        android:singleLine="false" />
 
                     <EditText
                         android:id="@+id/editText13"
@@ -303,158 +325,184 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/checkBoxFragile"
+                    android:id="@+id/CBFragile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Fragile"
-                    android:textColor="#000000" />
+                    android:textColor="#0E0C0C"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
-                <EditText
-                    android:id="@+id/editText6"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView25"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="PENERIMA"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Name"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edtNamaPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:singleLine="false"
-                    android:text="Cost Estimation" />
+                    android:hint="Yout company name"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Phone number"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edtTelpPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="Insert your destination company's name"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/textView34"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Destiantion companny'a name"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edtPerusahaanPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="Insert the destination company's name"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/textView41"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Destination company's phone"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/edtTelpPerusahaanPenerima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="Insert the destination company's phone"
+                    android:inputType="textPersonName" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/TextView33"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Volume" />
-
-                    <EditText
-                        android:id="@+id/editText11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView34"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Destination" />
-
-                    <EditText
-                        android:id="@+id/editText15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView41"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Price" />
-
-                    <EditText
-                        android:id="@+id/editText16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView42"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Insurance" />
+                        android:layout_marginTop="10dp"
+                        android:text="Destination company's address" />
 
-                    <EditText
-                        android:id="@+id/editText17"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView43"
+                    <Spinner
+                        android:id="@+id/spinCountryPenerima"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_weight="1"
-                        android:text="Total costs" />
+                        android:layout_marginTop="10dp" />
+
+                    <Spinner
+                        android:id="@+id/spinProvicePenerima"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
+
+                    <Spinner
+                        android:id="@+id/spinStatePenerima"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" />
 
                     <EditText
-                        android:id="@+id/editText18"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/codePenerima"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
                         android:ems="10"
+                        android:hint="ZIP Code"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/addressPenerima"
+                        android:layout_width="match_parent"
+                        android:layout_height="103dp"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:hint="Full Address"
                         android:inputType="textPersonName" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="357dp"
+                android:layout_width="445dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btnCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="Cancel" />
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/btnAddItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="Payment" />
+                    android:text="Add Item" />
+
+                <Button
+                    android:id="@+id/btnDone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Done" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

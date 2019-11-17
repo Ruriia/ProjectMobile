@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         inputCity = findViewById(R.id.inputCity);
         inputDistrict = findViewById(R.id.inputDistrict);
         inputZip = findViewById(R.id.inputZip);
-        spinProvince = findViewById(R.id.spinnerProvince);
+        spinProvince = findViewById(R.id.spinProvincePegirim);
         checkBox = findViewById(R.id.checkBox);
 
         btnRegister = findViewById(R.id.btnRegister);
