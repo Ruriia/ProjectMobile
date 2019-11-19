@@ -9,8 +9,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,8 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtShipment"
@@ -352,10 +352,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/dataBarang"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:id="@+id/dataBarang"
                 android:orientation="vertical">
 
                 <TextView
@@ -392,8 +392,8 @@
                     <LinearLayout
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginRight="10dp">
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView55"
@@ -415,8 +415,8 @@
                     <LinearLayout
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView56"
@@ -431,14 +431,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginTop="10dp"
-                            android:entries="@array/unit"/>
+                            android:entries="@array/unit" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="10dp">
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView63"
@@ -454,10 +454,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:ems="10"
-                            android:inputType="number"
-                            android:hint="per unit in kg"
                             android:fontFamily="@font/nunito_light"
-                            android:textSize="14sp"/>
+                            android:hint="per unit in kg"
+                            android:inputType="number"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -465,15 +465,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:layout_marginRight="5dp">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView57"
@@ -489,7 +489,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
                             android:text="per unit in meter"
-                            android:textSize="8sp"/>
+                            android:textSize="8sp" />
 
                         <EditText
                             android:id="@+id/edtWidth"
@@ -503,9 +503,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:layout_marginRight="5dp">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView59"
@@ -521,7 +521,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
                             android:text="per unit in meter"
-                            android:textSize="8sp"/>
+                            android:textSize="8sp" />
 
                         <EditText
                             android:id="@+id/edtLength"
@@ -536,9 +536,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:layout_marginRight="5dp">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView61"
@@ -554,7 +554,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_semibold"
                             android:text="per unit in meter"
-                            android:textSize="8sp"/>
+                            android:textSize="8sp" />
 
                         <EditText
                             android:id="@+id/edtHeight"
@@ -570,8 +570,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -582,18 +582,50 @@
                             android:id="@+id/checkBox2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Fragile"
-                            android:fontFamily="@font/nunito_semibold"/>
+                            android:fontFamily="@font/nunito_semibold"
+                            android:text="Fragile" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="We charge additional cost for fragile item by make wood packaging for it."
-                            android:textSize="8sp"
                             android:layout_marginStart="7dp"
-                            android:fontFamily="@font/nunito_light"/>
+                            android:fontFamily="@font/nunito_light"
+                            android:text="We charge additional cost for fragile item by make wood packaging for it."
+                            android:textSize="8sp" />
+
                     </LinearLayout>
                 </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Input Image"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryBlue"
+                    android:textSize="18sp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:id="@+id/previewimage"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="7dp"
+                        />
+
+                    <Button
+                        android:id="@+id/uploadimage"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Select Image"/>
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -659,5 +691,12 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
