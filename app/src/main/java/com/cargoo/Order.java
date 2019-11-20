@@ -5,7 +5,7 @@ import java.util.Date;
 public class Order {
     private String orderID;
     private String userID;
-    private Date orderDate;
+    private String orderDate;
     private String orderStatus;
     private String namaPengirim;
     private String emailPengirim;
@@ -33,7 +33,7 @@ public class Order {
 
     }
 
-    public Order(String orderID, String userID, Date orderDate, String orderStatus, String namaPengirim, String emailPengirim, String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, Date deliveryDate) {
+    public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim, String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, Date deliveryDate) {
         this.orderID = orderID;
         this.userID = userID;
         this.orderDate = orderDate;
@@ -63,11 +63,11 @@ public class Order {
         this.userID = userID;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
