@@ -27,13 +27,13 @@ public class Order {
 //    private String kecamatanPenerima;
 //    private int kodePosPenerima;
 
-    private Date deliveryDate;
+    private String deliveryDate;
 
     public Order(){
 
     }
 
-    public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim, String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, Date deliveryDate) {
+    public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim, String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, String deliveryDate) {
         this.orderID = orderID;
         this.userID = userID;
         this.orderDate = orderDate;
@@ -127,11 +127,11 @@ public class Order {
         this.telpPenerima = telpPenerima;
     }
 
-    public Date getDeliveryDate() {
+    public String getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
+    public void setDeliveryDate(String deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 }
