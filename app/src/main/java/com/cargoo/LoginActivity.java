@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(fbUser != null){
                     Intent i = new Intent(LoginActivity.this, ActivityLoader.class);
                     startActivity(i);
+                    finish();
                 }
                 else{
                     //Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_LONG).show();
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                             }else{
                                 progressBar2.setVisibility(View.GONE);
                                 startActivity(new Intent(LoginActivity.this, ActivityLoader.class));
+                                finish();
                             }
                         }
                     });
