@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:inputType="textMultiLine"
+                    android:inputType="textMultiLine|textCapWords"
                     android:lines="3" />
 
                 <TextView
@@ -284,7 +284,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:inputType="textMultiLine"
+                    android:inputType="textMultiLine|textCapWords"
                     android:lines="3" />
 
                 <TextView
@@ -383,7 +383,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
-                    android:inputType="textCapSentences" />
+                    android:inputType="textCapWords" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -457,7 +457,7 @@
                             android:ems="10"
                             android:fontFamily="@font/nunito_light"
                             android:hint="per unit in kg"
-                            android:inputType="number"
+                            android:inputType="numberDecimal"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -498,7 +498,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:ems="10"
-                            android:inputType="number" />
+                            android:inputType="numberDecimal" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -530,7 +530,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:ems="10"
-                            android:inputType="number" />
+                            android:inputType="numberDecimal" />
 
                     </LinearLayout>
 
@@ -563,7 +563,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:ems="10"
-                            android:inputType="number" />
+                            android:inputType="numberDecimal" />
 
                     </LinearLayout>
                 </LinearLayout>

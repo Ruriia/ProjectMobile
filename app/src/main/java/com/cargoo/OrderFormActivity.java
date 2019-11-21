@@ -1,5 +1,6 @@
 package com.cargoo;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -21,8 +22,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -48,7 +56,16 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
     private boolean isFragile = false;
 
-    DatabaseReference dbOrder, dbItems;
+    DatabaseReference dbOrder, dbItems, dbUsers;
+
+    private FirebaseAuth fbAuth;
+
+    private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
+    private String fbUserId = fbUser.getUid();
+
+    // Initiate Form Auto-Fill
+    private String refNamaPengirim, refTelpPengirim, refEmailPengirim, refAlamatPengirim, refProvinsiPengirim, refKotaPengirim, refKecamatanPengirim, refKodePosPengirim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +79,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
         edtNamaPenerima = findViewById(R.id.edtNamaPenerima);
         edtTelpPenerima = findViewById(R.id.edtTelpPenerima);
-        edtEmailPenerima= findViewById(R.id.edtEmailPenerima);
+        edtEmailPenerima = findViewById(R.id.edtEmailPenerima);
 
         edtAlamatPengirim = findViewById(R.id.edtAlamatPengirim);
         edtProvinsiPengirim = findViewById(R.id.edtProvinsiPengirim);
@@ -70,11 +87,11 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
         edtKecamatanPengirim = findViewById(R.id.edtKecamatanPengirim);
         edtKodePosPengirim = findViewById(R.id.edtKodePosPengirim);
 
-        edtAlamatPenerima= findViewById(R.id.edtAlamatPenerima);
-        edtProvinsiPenerima= findViewById(R.id.edtProvinsiPenerima);
-        edtKotaPenerima= findViewById(R.id.edtKotaPenerima);
-        edtKecamatanPenerima= findViewById(R.id.edtKecamatanPenerima);
-        edtKodePosPenerima= findViewById(R.id.edtKodePosPenerima);
+        edtAlamatPenerima = findViewById(R.id.edtAlamatPenerima);
+        edtProvinsiPenerima = findViewById(R.id.edtProvinsiPenerima);
+        edtKotaPenerima = findViewById(R.id.edtKotaPenerima);
+        edtKecamatanPenerima = findViewById(R.id.edtKecamatanPenerima);
+        edtKodePosPenerima = findViewById(R.id.edtKodePosPenerima);
 
         edtNamaBarang = findViewById(R.id.edtNamaBarang);
         edtQuantity = findViewById(R.id.edtQuantity);
@@ -87,11 +104,52 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
         cbFragile = findViewById(R.id.cbFragile);
 
+        // Automated-fill form
+        //String authID = fbAuth.getUid().toString();
+        //edtNamaPengirim.setText("oy");
 
         final ProgressBar progressBar3 = findViewById(R.id.progressBar3);
 
+        fbAuth = FirebaseAuth.getInstance();
+
         dbOrder = FirebaseDatabase.getInstance().getReference().child("Orders");
         dbItems = FirebaseDatabase.getInstance().getReference().child("Items");
+
+        // READ USER'S INFO
+        dbUsers = FirebaseDatabase.getInstance().getReference().child("Users");
+        Query q1 = FirebaseDatabase.getInstance().getReference().child("Users")
+                .orderByChild("userID")
+                .equalTo(fbUserId);
+
+        q1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                refNamaPengirim = dataSnapshot.child(fbUserId).child("name").getValue().toString();
+                refTelpPengirim = dataSnapshot.child(fbUserId).child("phone").getValue(String.class);
+                refEmailPengirim = dataSnapshot.child(fbUserId).child("email").getValue(String.class);
+                refAlamatPengirim = dataSnapshot.child(fbUserId).child("address").child("address").getValue(String.class);
+                refProvinsiPengirim = dataSnapshot.child(fbUserId).child("address").child("province").getValue(String.class);
+                refKotaPengirim = dataSnapshot.child(fbUserId).child("address").child("city").getValue(String.class);
+                refKecamatanPengirim = dataSnapshot.child(fbUserId).child("address").child("district").getValue(String.class);
+                refKodePosPengirim = String.valueOf(dataSnapshot.child(fbUserId).child("address").child("zipcode").getValue(Integer.class));
+
+                edtNamaPengirim.setText(refNamaPengirim);
+                edtEmailPengirim.setText(refEmailPengirim);
+                edtTelpPengirim.setText(refTelpPengirim);
+                edtAlamatPengirim.setText(refAlamatPengirim);
+                edtProvinsiPengirim.setText(refProvinsiPengirim);
+                edtKotaPengirim.setText(refKotaPengirim);
+                edtKecamatanPengirim.setText(refKecamatanPengirim);
+                edtKodePosPengirim.setText(refKodePosPengirim);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), databaseError.getCode(), Toast.LENGTH_LONG).show();
+            }
+        });
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +173,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
             @Override
             public void onClick(View view) {
                 String orderID = dbOrder.push().getKey();
-                String userID = "-Ltf8UMe010yUMBuXvY5"; // Retrieve from Users Collection
+                String userID = fbAuth.getCurrentUser().getUid(); // Retrieve from FB Authentication
 
                 Date date = Calendar.getInstance().getTime();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -129,7 +187,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
                 String NamaPenerima = edtNamaPenerima.getText().toString();
                 String TelpPenerima = edtTelpPenerima.getText().toString();
-                String EmailPenerima= edtEmailPenerima.getText().toString();
+                String EmailPenerima = edtEmailPenerima.getText().toString();
 
                 String AlamatPengirim = edtAlamatPengirim.getText().toString();
                 String ProvinsiPengirim = edtProvinsiPengirim.getText().toString();
@@ -137,11 +195,11 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 String KecamatanPengirim = edtKecamatanPengirim.getText().toString();
                 String KodePosPengirim = edtKodePosPengirim.getText().toString();
 
-                String AlamatPenerima= edtAlamatPenerima.getText().toString();
-                String ProvinsiPenerima= edtProvinsiPenerima.getText().toString();
-                String KotaPenerima= edtKotaPenerima.getText().toString();
-                String KecamatanPenerima= edtKecamatanPenerima.getText().toString();
-                String KodePosPenerima= edtKodePosPenerima.getText().toString();
+                String AlamatPenerima = edtAlamatPenerima.getText().toString();
+                String ProvinsiPenerima = edtProvinsiPenerima.getText().toString();
+                String KotaPenerima = edtKotaPenerima.getText().toString();
+                String KecamatanPenerima = edtKecamatanPenerima.getText().toString();
+                String KodePosPenerima = edtKodePosPenerima.getText().toString();
 
                 String tglPengiriman = edtTglPengiriman.getText().toString();
 
@@ -170,28 +228,40 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 String itemName = edtNamaBarang.getText().toString();
                 int quantity = Integer.parseInt(edtQuantity.getText().toString());
                 String unit = spinUnit.getSelectedItem().toString();
-                float width = Float.parseFloat(edtWidth.getText().toString());
-                float length = Float.parseFloat(edtLength.getText().toString());
-                float height = Float.parseFloat(edtHeight.getText().toString());
-                float weight = Float.parseFloat(edtWeight.getText().toString());
+                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString()));
+                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString()));
+                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString()));
+                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString()));
                 float volume = width * length * height;
 
-                if(cbFragile.isChecked()){
+                if (cbFragile.isChecked()) {
                     isFragile = true;
                 }
 
                 Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, isFragile);
-                try{
-                    dbItems.child(itemID).setValue(dataItems);
-                    progressBar3.setVisibility(View.VISIBLE);
 
-                    // Sementara aja, nanti yang bener direct ke activity pembayaran.
-                    startActivity(new Intent(OrderFormActivity.this, HomeActivity.class));
-                    Toast.makeText(getApplicationContext(), "Order has been created. Please wait for the confirmation", Toast.LENGTH_LONG).show();
-                }catch(Exception ex){
-                    Toast.makeText(OrderFormActivity.this, ex.getMessage(), Toast.LENGTH_LONG).show();
-                }
+                dbItems.child(itemID).setValue(dataItems);
+                progressBar3.setVisibility(View.VISIBLE);
+                // Sementara aja, nanti yang bener direct ke activity pembayaran.
+                //startActivity(new Intent(OrderFormActivity.this, HomeActivity.class));
+                //Toast.makeText(getApplicationContext(), "Order has been created. Please wait for the confirmation", Toast.LENGTH_LONG).show();
 
+                ValueEventListener writeListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        progressBar3.setVisibility(View.GONE);
+
+                        // Go to payment activity here !
+                        Toast.makeText(getApplicationContext(), "Order has been created. Please wait for the confirmation", Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(getApplicationContext(), databaseError.toString(), Toast.LENGTH_LONG).show();
+                    }
+                };
+
+                dbItems.addValueEventListener(writeListener);
 
             }
         });
@@ -200,7 +270,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == image_id && resultCode == RESULT_OK && data != null){
+        if (requestCode == image_id && resultCode == RESULT_OK && data != null) {
             Uri selectedImage = data.getData();
             previewimage.setImageURI(selectedImage);
         }
