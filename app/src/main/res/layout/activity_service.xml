@@ -44,6 +44,25 @@
 
         </LinearLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btnDelivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Order Now" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -55,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:src="@tools:sample/avatars" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -76,7 +96,7 @@
             </LinearLayout>
 
         </LinearLayout>
-
+        -->
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

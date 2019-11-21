@@ -5,15 +5,15 @@ public class Items {
     private String orderID;
     private String itemName;
     private int quantity;
-    private int unit;
-    private int width;
-    private int length;
-    private int height;
-    private int weight;
-    private int volume;
+    private String unit;
+    private float width;
+    private float length;
+    private float height;
+    private float weight;
+    private float volume;
     private boolean fragileStatus;
 
-    public Items(String itemID, String orderID, String itemName, int quantity, int unit, int width, int length, int height, int weight, int volume, boolean fragileStatus) {
+    public Items(String itemID, String orderID, String itemName, int quantity, String unit, float width, float length, float height, float weight, float volume, boolean fragileStatus) {
         this.itemID = itemID;
         this.orderID = orderID;
         this.itemName = itemName;
@@ -59,51 +59,51 @@ public class Items {
         this.quantity = quantity;
     }
 
-    public int getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-    public void setUnit(int unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 
-    public int getWidth() {
+    public float getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(float width) {
         this.width = width;
     }
 
-    public int getLength() {
+    public float getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(float length) {
         this.length = length;
     }
 
-    public int getHeight() {
+    public float getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(float height) {
         this.height = height;
     }
 
-    public int getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
-    public int getVolume() {
+    public float getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(float volume) {
         this.volume = volume;
     }
 

@@ -15,10 +15,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.data.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,9 +32,12 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth fbAuth;
     private TextView txtSignIn;
     private ProgressBar progressBar;
-
     DatabaseReference dbUsers;
 
+    public Users user = new Users();
+
+    public String userIDcoba;
+    public String authID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,16 +84,16 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String companyName = inputCompanyName.getText().toString();
-                String email = inputEmail.getText().toString();
-                String password = inputPassword.getText().toString();
-                String confirmPass = inputConfirmPass.getText().toString();
-                String phone = inputPhone.getText().toString();
-                String address = inputAddress.getText().toString();
-                int zip = Integer.parseInt(inputZip.getText().toString());
-                String province = spinProvince.getSelectedItem().toString();
-                String city = inputCity.getText().toString();
-                String district = inputDistrict.getText().toString();
+                final String companyName = inputCompanyName.getText().toString();
+                final String email = inputEmail.getText().toString();
+                final String password = inputPassword.getText().toString();
+                final String confirmPass = inputConfirmPass.getText().toString();
+                final String phone = inputPhone.getText().toString();
+                final String address = inputAddress.getText().toString();
+                final int zip = Integer.parseInt(inputZip.getText().toString());
+                final String province = spinProvince.getSelectedItem().toString();
+                final String city = inputCity.getText().toString();
+                final String district = inputDistrict.getText().toString();
 
                 // ------------------------------------ FIREBASE AUTHENTICATION -------------------------------
                 if(email.isEmpty()) {
@@ -133,24 +138,27 @@ public class RegisterActivity extends AppCompatActivity {
                         fbAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(!task.isSuccessful()){
+                                if(!task.isSuccessful()){ // If user creation is faile
                                     Toast.makeText(RegisterActivity.this, "Sorry, the registration has failed. Please try again", Toast.LENGTH_LONG).show();
                                 }else{
+                                    authID = fbAuth.getCurrentUser().getUid();
+
+                                    // ---------------------- INPUT COMPANY DATA TO FIREBASE REALTIME DATABASE ---------------------------
+                                    String userID = authID;
+
+                                    Users userdata1 = new Users(userID, companyName, phone, email, password);
+                                    Users userdata2 = new Users(address, province, city, district, zip); // For address
+
+                                    dbUsers.child(userID).setValue(userdata1);
+                                    dbUsers.child(userID).child("address").setValue(userdata2);
+
                                     fbAuth.getInstance().signOut();
                                     progressBar.setVisibility(View.GONE);
                                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                    Toast.makeText(RegisterActivity.this, "Registrasion has succeed. Try to login.", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
-
-                        // ---------------------- INPUT COMPANY DATA TO FIREBASE REALTIME DATABASE ---------------------------
-                        String userID = dbUsers.push().getKey();
-
-                        Users userdata1 = new Users(userID, companyName, phone, email, password);
-                        Users userdata2 = new Users(address, province, city, district, zip); // For address
-
-                        dbUsers.child(userID).setValue(userdata1);
-                        dbUsers.child(userID).child("address").setValue(userdata2);
                     }
                 }
                 else{
