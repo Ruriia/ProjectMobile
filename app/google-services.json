@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "337271872961-mnicsfij5ngcudehgupd91r4m09dhgb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cargoo",
+            "certificate_hash": "dedfa986414ead308b971d81194c70f7a597b5f9"
+          }
+        },
+        {
           "client_id": "337271872961-jm8ic611t1cr2ikg2aennoi7c03eemo9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
