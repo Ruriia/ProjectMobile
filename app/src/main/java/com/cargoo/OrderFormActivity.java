@@ -63,6 +63,16 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
     private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
     private String fbUserId = fbUser.getUid();
 
+    private int weightPrice = 15000; // Untuk harga per kg
+    private int volumePrice = 20000; // Untuk harga per m3
+    private int deliveryCost = 5000; // Untuk harga per km
+    private int itemPrice = 0;
+
+    private int totalPrice = 0;
+    private int totalWeight = 0;
+    private int totalVolume = 0;
+
+
     // Initiate Form Auto-Fill
     private String refNamaPengirim, refTelpPengirim, refEmailPengirim, refAlamatPengirim, refProvinsiPengirim, refKotaPengirim, refKecamatanPengirim, refKodePosPengirim;
 
@@ -194,36 +204,18 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 String KotaPengirim = edtKotaPengirim.getText().toString();
                 String KecamatanPengirim = edtKecamatanPengirim.getText().toString();
                 String KodePosPengirim = edtKodePosPengirim.getText().toString();
+                String fullAddrPengirim = AlamatPengirim + ", " + KecamatanPengirim + ", " + KotaPengirim + ", " + ProvinsiPengirim + " " + KodePosPengirim;
 
                 String AlamatPenerima = edtAlamatPenerima.getText().toString();
                 String ProvinsiPenerima = edtProvinsiPenerima.getText().toString();
                 String KotaPenerima = edtKotaPenerima.getText().toString();
                 String KecamatanPenerima = edtKecamatanPenerima.getText().toString();
                 String KodePosPenerima = edtKodePosPenerima.getText().toString();
+                String fullAddrPenerima = AlamatPenerima + ", " + KecamatanPenerima + ", " + KotaPenerima + ", " + ProvinsiPenerima + " " + KodePosPenerima;
 
                 String tglPengiriman = edtTglPengiriman.getText().toString();
 
-                Map<String, Object> mapAlamatPengirim = new HashMap<String, Object>();
-                mapAlamatPengirim.put("AddressLine", AlamatPengirim);
-                mapAlamatPengirim.put("Provinsi", ProvinsiPengirim);
-                mapAlamatPengirim.put("Kota", KotaPengirim);
-                mapAlamatPengirim.put("Kecamatan", KecamatanPengirim);
-                mapAlamatPengirim.put("KodePos", KodePosPengirim);
-
-                Map<String, Object> mapAlamatPenerima = new HashMap<String, Object>();
-                mapAlamatPenerima.put("AddressLine", AlamatPenerima);
-                mapAlamatPenerima.put("Provinsi", ProvinsiPenerima);
-                mapAlamatPenerima.put("Kota", KotaPenerima);
-                mapAlamatPenerima.put("Kecamatan", KecamatanPenerima);
-                mapAlamatPenerima.put("KodePos", KodePosPenerima);
-
-                Order dataOrder = new Order(orderID, userID, orderDate, orderStatus, NamaPengirim, EmailPengirim, TelpPengirim, NamaPenerima, EmailPenerima, TelpPenerima, tglPengiriman);
-
-                dbOrder.child(orderID).setValue(dataOrder);
-                dbOrder.child(orderID).child("AlamatPengirim").setValue(mapAlamatPengirim);
-                dbOrder.child(orderID).child("AlamatPenerima").setValue(mapAlamatPenerima);
-
-                // --------- INPUT ITEM -----------
+                // ------------------ ITEM ATTRIBUTE --------------
                 String itemID = dbItems.push().getKey();
                 String itemName = edtNamaBarang.getText().toString();
                 int quantity = Integer.parseInt(edtQuantity.getText().toString());
@@ -238,7 +230,22 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                     isFragile = true;
                 }
 
-                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, isFragile);
+                // -------------------- CALCULATION ------------------
+
+                totalWeight += (int)weight;
+                totalVolume += (int) volume;
+                itemPrice = ((int) volume * volumePrice) + ((int) weight * weightPrice);
+
+                if(isFragile){
+                    itemPrice += 10000;
+                }
+
+                int deliveryPrice = distance * deliveryCost;
+
+                totalPrice += deliveryPrice + itemPrice;
+
+                // --------- INPUT ITEM TO DATABASE -----------
+                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile);
 
                 dbItems.child(itemID).setValue(dataItems);
                 progressBar3.setVisibility(View.VISIBLE);
@@ -246,6 +253,31 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 //startActivity(new Intent(OrderFormActivity.this, HomeActivity.class));
                 //Toast.makeText(getApplicationContext(), "Order has been created. Please wait for the confirmation", Toast.LENGTH_LONG).show();
 
+                // --------- INPUT ORDER TO DATABASE ----------
+                Map<String, Object> mapAlamatPengirim = new HashMap<String, Object>();
+                mapAlamatPengirim.put("AddressLine", AlamatPengirim);
+                mapAlamatPengirim.put("Provinsi", ProvinsiPengirim);
+                mapAlamatPengirim.put("Kota", KotaPengirim);
+                mapAlamatPengirim.put("Kecamatan", KecamatanPengirim);
+                mapAlamatPengirim.put("KodePos", KodePosPengirim);
+                mapAlamatPengirim.put("Full", fullAddrPengirim);
+
+                Map<String, Object> mapAlamatPenerima = new HashMap<String, Object>();
+                mapAlamatPenerima.put("AddressLine", AlamatPenerima);
+                mapAlamatPenerima.put("Provinsi", ProvinsiPenerima);
+                mapAlamatPenerima.put("Kota", KotaPenerima);
+                mapAlamatPenerima.put("Kecamatan", KecamatanPenerima);
+                mapAlamatPenerima.put("KodePos", KodePosPenerima);
+                mapAlamatPenerima.put("Full", fullAddrPenerima);
+
+                Order dataOrder = new Order(orderID, userID, orderDate, orderStatus, NamaPengirim, EmailPengirim, TelpPengirim, NamaPenerima
+                        , EmailPenerima, TelpPenerima, tglPengiriman, distance, deliveryPrice, totalWeight, totalVolume, itemPrice, totalPrice);
+
+                dbOrder.child(orderID).setValue(dataOrder);
+                dbOrder.child(orderID).child("AlamatPengirim").setValue(mapAlamatPengirim);
+                dbOrder.child(orderID).child("AlamatPenerima").setValue(mapAlamatPenerima);
+
+                // ---------------------- EVENT LISTENER --------------------------
                 ValueEventListener writeListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -262,6 +294,14 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 };
 
                 dbItems.addValueEventListener(writeListener);
+
+            }
+        });
+
+        Button btnAddItem = findViewById(R.id.btnAddItem);
+        btnAddItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
         });

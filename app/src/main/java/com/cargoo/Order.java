@@ -11,29 +11,26 @@ public class Order {
     private String emailPengirim;
     private String telpPengirim;
 
-//    private String alamatPengirim;
-//    private String provinsiPengirim;
-//    private String kotaPengirim;
-//    private String kecamatanPengirim;
-//    private int kodePosPengirim;
-
     private String namaPenerima;
     private String emailPenerima;
     private String telpPenerima;
 
-//    private String alamatPenerima;
-//    private String provinsiPenerima;
-//    private String kotaPenerima;
-//    private String kecamatanPenerima;
-//    private int kodePosPenerima;
-
     private String deliveryDate;
+
+    private float distance;
+    private int deliveryPrice;
+    private int itemPrice;
+
+    private float totalWeight;
+    private float totalVolume;
+    private int totalPrice;
+
 
     public Order(){
 
     }
 
-    public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim, String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, String deliveryDate) {
+    public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim, String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, String deliveryDate, float distance, int deliveryPrice, float totalWeight, float totalVolume, int itemPrice, int totalPrice) {
         this.orderID = orderID;
         this.userID = userID;
         this.orderDate = orderDate;
@@ -45,6 +42,12 @@ public class Order {
         this.emailPenerima = emailPenerima;
         this.telpPenerima = telpPenerima;
         this.deliveryDate = deliveryDate;
+        this.distance = distance;
+        this.deliveryPrice = deliveryPrice;
+        this.totalWeight = totalWeight;
+        this.totalVolume = totalVolume;
+        this.itemPrice = itemPrice;
+        this.totalPrice = totalPrice;
     }
 
     public String getOrderID() {
@@ -133,5 +136,53 @@ public class Order {
 
     public void setDeliveryDate(String deliveryDate) {
         this.deliveryDate = deliveryDate;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
+    }
+
+    public int getDeliveryPrice() {
+        return deliveryPrice;
+    }
+
+    public void setDeliveryPrice(int deliveryPrice) {
+        this.deliveryPrice = deliveryPrice;
+    }
+
+    public float getTotalWeight() {
+        return totalWeight;
+    }
+
+    public void setTotalWeight(float totalWeight) {
+        this.totalWeight = totalWeight;
+    }
+
+    public float getTotalVolume() {
+        return totalVolume;
+    }
+
+    public void setTotalVolume(float totalVolume) {
+        this.totalVolume = totalVolume;
+    }
+
+    public int getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
