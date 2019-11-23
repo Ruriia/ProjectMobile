@@ -324,7 +324,7 @@
                         />
 
                     <Button
-                        android:id="@+id/uploadimage"
+                        android:id="@+id/btnUploadimage"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Select Image"/>
@@ -404,7 +404,7 @@
                 android:layout_marginTop="10dp">
 
                 <ProgressBar
-                    android:id="@+id/progressBar3"
+                    android:id="@+id/progressBar4"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
