@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".addMoreItem"></activity>
+        <activity android:name=".activity_order_complete"></activity>
+        <activity android:name=".addMoreItem" />
         <activity android:name=".New_Form" />
         <activity android:name=".OrderFormActivity" />
         <activity android:name=".AccountSetting" />
