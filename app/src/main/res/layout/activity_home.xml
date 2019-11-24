@@ -107,17 +107,14 @@
                             android:textColor="@color/colorGray"
                             android:textSize="22sp" />
 
-                        <TextView
-                            android:id="@+id/textView3"
+                        <Button
+                            android:id="@+id/btnCheckAllProducts"
+                            style="@android:style/Widget.Holo.Button.Borderless"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
-                            android:fontFamily="@font/overlock_bold"
-                            android:gravity="end"
-                            android:text="Check all >"
-                            android:textColor="@color/colorGray"
-                            android:textSize="16sp" />
+                            android:text="Check all" />
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -367,17 +364,14 @@
                             android:textColor="@color/colorGray"
                             android:textSize="22sp" />
 
-                        <TextView
-                            android:id="@+id/textView9"
+                        <Button
+                            android:id="@+id/btnCheckAllServices"
+                            style="@android:style/Widget.Holo.Button.Borderless"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
                             android:layout_weight="1"
-                            android:fontFamily="@font/overlock_bold"
-                            android:gravity="end"
-                            android:text="Check all >"
-                            android:textColor="@color/colorGray"
-                            android:textSize="16sp" />
+                            android:text="Check all" />
+
                     </LinearLayout>
 
                 </LinearLayout>
