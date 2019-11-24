@@ -70,8 +70,8 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
     private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
     private String fbUserId = fbUser.getUid();
 
-    private int weightPrice = 15000; // Untuk harga per kg
-    private int volumePrice = 20000; // Untuk harga per m3
+    private int weightPrice = 2000; // Untuk harga per kg
+    private int volumePrice = 3000; // Untuk harga per m3
     private int deliveryCost = 5000; // Untuk harga per km
     private int itemPrice = 0;
 
@@ -227,10 +227,11 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 String itemName = edtNamaBarang.getText().toString();
                 int quantity = Integer.parseInt(edtQuantity.getText().toString());
                 String unit = spinUnit.getSelectedItem().toString();
-                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString()));
-                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString()));
-                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString()));
-                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString()));
+                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString())) * quantity;
+                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString())) * quantity;
+                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString())) * quantity;
+                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString())) * quantity;
+
                 float volume = width * length * height;
 
                 if (cbFragile.isChecked()) {
@@ -238,9 +239,6 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 }
 
                 // -------------------- CALCULATION ------------------
-
-                totalWeight += (int)weight;
-                totalVolume += (int) volume;
                 itemPrice = ((int) volume * volumePrice) + ((int) weight * weightPrice);
 
                 if(isFragile){
@@ -269,7 +267,11 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
                 int deliveryPrice = (int) distance * deliveryCost;
 
-                totalPrice += deliveryPrice + itemPrice;
+                totalPrice = deliveryPrice + itemPrice;
+
+                totalWeight = (int)weight;
+                totalVolume = (int) volume;
+
 
                 // --------- INPUT ITEM TO DATABASE -----------
                 Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile);
@@ -321,6 +323,9 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
                 dbItems.addValueEventListener(writeListener);
 
+                totalPrice = 0;
+                totalWeight = 0;
+                totalVolume = 0;
             }
         });
 
@@ -366,10 +371,10 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 String itemName = edtNamaBarang.getText().toString();
                 int quantity = Integer.parseInt(edtQuantity.getText().toString());
                 String unit = spinUnit.getSelectedItem().toString();
-                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString()));
-                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString()));
-                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString()));
-                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString()));
+                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString())) * quantity;
+                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString())) * quantity;
+                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString())) * quantity;
+                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString())) * quantity;
                 float volume = width * length * height;
 
                 if (cbFragile.isChecked()) {
@@ -377,9 +382,6 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 }
 
                 // -------------------- CALCULATION ------------------
-
-                totalWeight += (int)weight;
-                totalVolume += (int) volume;
                 itemPrice = ((int) volume * volumePrice) + ((int) weight * weightPrice);
 
                 if(isFragile){
@@ -408,7 +410,10 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
                 int deliveryPrice = (int) distance * deliveryCost;
 
-                totalPrice += deliveryPrice + itemPrice;
+                totalPrice = deliveryPrice + itemPrice;
+
+                totalWeight = (int)weight;
+                totalVolume = (int) volume;
 
                 progressBar3.setVisibility(View.VISIBLE);
 
@@ -457,6 +462,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                         i.putExtra("totalWeight", totalWeight);
                         i.putExtra("totalVolume", totalVolume);
                         i.putExtra("orderID", orderID);
+                        i.putExtra("itemPrice", itemPrice);
                         startActivity(i);
                     }
 

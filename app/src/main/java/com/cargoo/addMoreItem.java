@@ -26,15 +26,18 @@ public class addMoreItem extends AppCompatActivity {
     private float totalWeight; // To update totalWeight in coll. Orders
     private float totalVolume; // To update totalVolume in coll. Orders
     private String orderID; // Get order ID from order form.
+    private int prevItemPrice;
+
+    private int totalItemPrice;
 
     private Button btnUpload, btnAddItem, btnDone, btnCancel;
     private EditText edtNamaBarang, edtQuantity, edtWeight, edtWidth, edtLength, edtHeight;
     private Spinner spinUnit;
     private CheckBox cbFragile;
 
-    private int weightPrice = 15000; // Untuk harga per kg
-    private int volumePrice = 20000; // Untuk harga per m3
-    private int itemPrice;
+    private int weightPrice = 2000; // Untuk harga per kg
+    private int volumePrice = 3000; // Untuk harga per m3
+    private int itemPrice = 0;
     private boolean isFragile = false;
 
     DatabaseReference dbOrder, dbItems;
@@ -70,6 +73,7 @@ public class addMoreItem extends AppCompatActivity {
         totalWeight = i.getIntExtra("totalWeight", 0);
         totalVolume = i.getIntExtra("totalVolume", 0);
         orderID = i.getStringExtra("orderID");
+        prevItemPrice = i.getIntExtra("itemPrice", 0);
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,10 +84,10 @@ public class addMoreItem extends AppCompatActivity {
                 String itemName = edtNamaBarang.getText().toString();
                 int quantity = Integer.parseInt(edtQuantity.getText().toString());
                 String unit = spinUnit.getSelectedItem().toString();
-                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString()));
-                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString()));
-                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString()));
-                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString()));
+                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString())) * quantity;
+                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString())) * quantity;
+                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString())) * quantity;
+                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString())) * quantity;
                 float volume = width * length * height;
 
                 if (cbFragile.isChecked()) {
@@ -91,16 +95,17 @@ public class addMoreItem extends AppCompatActivity {
                 }
 
                 // -------------------- CALCULATION ------------------
-
-                totalWeight += (int)weight;
-                totalVolume += (int) volume;
                 itemPrice = ((int) volume * volumePrice) + ((int) weight * weightPrice);
+
+                totalItemPrice = prevItemPrice + itemPrice;
 
                 if(isFragile){
                     itemPrice += 10000;
                 }
 
                 totalPrice += itemPrice;
+                totalWeight += (int)weight;
+                totalVolume += (int) volume;
 
                 progressBar4.setVisibility(View.VISIBLE);
 
@@ -113,6 +118,7 @@ public class addMoreItem extends AppCompatActivity {
                 dbOrder.child(orderID).child("totalWeight").setValue(totalWeight);
                 dbOrder.child(orderID).child("totalVolume").setValue(totalVolume);
                 dbOrder.child(orderID).child("totalPrice").setValue(totalPrice);
+                dbOrder.child(orderID).child("itemPrice").setValue(totalItemPrice);
 
                 // ---------------------- EVENT LISTENER --------------------------
                 ValueEventListener writeListener = new ValueEventListener() {
@@ -133,6 +139,10 @@ public class addMoreItem extends AppCompatActivity {
                 };
 
                 dbOrder.addValueEventListener(writeListener);
+
+                totalPrice = 0;
+                totalWeight = 0;
+                totalVolume = 0;
             }
         });
 
@@ -145,10 +155,10 @@ public class addMoreItem extends AppCompatActivity {
                 String itemName = edtNamaBarang.getText().toString();
                 int quantity = Integer.parseInt(edtQuantity.getText().toString());
                 String unit = spinUnit.getSelectedItem().toString();
-                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString()));
-                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString()));
-                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString()));
-                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString()));
+                float width = (float) Math.ceil(Float.parseFloat(edtWidth.getText().toString())) * quantity;
+                float length = (float) Math.ceil(Float.parseFloat(edtLength.getText().toString())) * quantity;
+                float height = (float) Math.ceil(Float.parseFloat(edtHeight.getText().toString())) * quantity;
+                float weight = (float) Math.ceil(Float.parseFloat(edtWeight.getText().toString())) * quantity;
                 float volume = width * length * height;
 
                 if (cbFragile.isChecked()) {
@@ -156,16 +166,17 @@ public class addMoreItem extends AppCompatActivity {
                 }
 
                 // -------------------- CALCULATION ------------------
-
-                totalWeight += (int)weight;
-                totalVolume += (int) volume;
                 itemPrice = ((int) volume * volumePrice) + ((int) weight * weightPrice);
 
                 if(isFragile){
                     itemPrice += 10000;
                 }
 
+                totalItemPrice = prevItemPrice + itemPrice;
+
                 totalPrice += itemPrice;
+                totalWeight += (int)weight;
+                totalVolume += (int) volume;
 
                 progressBar4.setVisibility(View.VISIBLE);
 
@@ -178,6 +189,7 @@ public class addMoreItem extends AppCompatActivity {
                 dbOrder.child(orderID).child("totalWeight").setValue(totalWeight);
                 dbOrder.child(orderID).child("totalVolume").setValue(totalVolume);
                 dbOrder.child(orderID).child("totalPrice").setValue(totalPrice);
+                dbOrder.child(orderID).child("itemPrice").setValue(totalItemPrice);
 
                 // ---------------------- EVENT LISTENER --------------------------
                 ValueEventListener writeListener = new ValueEventListener() {
@@ -185,7 +197,9 @@ public class addMoreItem extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         progressBar4.setVisibility(View.GONE);
 
-                        Toast.makeText(getApplicationContext(), "New item has added. Make a payment now. ", Toast.LENGTH_LONG).show();
+                        finish();
+
+                        Toast.makeText(getApplicationContext(), "New item has added. Add new item now.", Toast.LENGTH_LONG).show();
 
                         // Go to add new item activity here !
                         Intent i = new Intent(addMoreItem.this, addMoreItem.class);
@@ -193,6 +207,7 @@ public class addMoreItem extends AppCompatActivity {
                         i.putExtra("totalWeight", totalWeight);
                         i.putExtra("totalVolume", totalVolume);
                         i.putExtra("orderID", orderID);
+                        i.putExtra("itemPrice", itemPrice);
                         startActivity(i);
                     }
 
