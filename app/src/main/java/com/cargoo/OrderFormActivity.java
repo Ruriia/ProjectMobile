@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -189,6 +190,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                OrderFormActivity.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                 orderID = dbOrder.push().getKey();
                 String userID = fbAuth.getCurrentUser().getUid(); // Retrieve from FB Authentication
 
@@ -278,9 +280,6 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
                 dbItems.child(itemID).setValue(dataItems);
                 progressBar3.setVisibility(View.VISIBLE);
-                // Sementara aja, nanti yang bener direct ke activity pembayaran.
-                //startActivity(new Intent(OrderFormActivity.this, HomeActivity.class));
-                //Toast.makeText(getApplicationContext(), "Order has been created. Please wait for the confirmation", Toast.LENGTH_LONG).show();
 
                 // --------- INPUT ORDER TO DATABASE ----------
                 Map<String, Object> mapAlamatPengirim = new HashMap<String, Object>();
@@ -311,8 +310,11 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         progressBar3.setVisibility(View.GONE);
-                        // Go to payment activity here !
-                        Toast.makeText(getApplicationContext(), "Order has been created. Make a payment now.", Toast.LENGTH_LONG).show();
+                        // Go to checkout activity here !
+                        Intent i = new Intent(OrderFormActivity.this, CheckoutActivity.class);
+                        // Add extra orderID & others here
+                        startActivity(i);
+                        finish();
                     }
 
                     @Override
@@ -321,7 +323,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                     }
                 };
 
-                dbItems.addValueEventListener(writeListener);
+                dbOrder.addValueEventListener(writeListener);
 
                 totalPrice = 0;
                 totalWeight = 0;
@@ -333,6 +335,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
         btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                OrderFormActivity.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                 orderID = dbOrder.push().getKey();
                 String userID = fbAuth.getCurrentUser().getUid(); // Retrieve from FB Authentication
 
@@ -464,6 +467,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                         i.putExtra("orderID", orderID);
                         i.putExtra("itemPrice", itemPrice);
                         startActivity(i);
+                        finish();
                     }
 
                     @Override

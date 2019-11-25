@@ -3,6 +3,9 @@ package com.cargoo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Service;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,10 +26,11 @@ public class addMoreItem extends AppCompatActivity {
 
     // Variables that gotten from Intent
     private int totalPrice; // To update totalPrice in coll. Orders
-    private float totalWeight; // To update totalWeight in coll. Orders
-    private float totalVolume; // To update totalVolume in coll. Orders
+    private int totalWeight; // To update totalWeight in coll. Orders
+    private int totalVolume; // To update totalVolume in coll. Orders
     private String orderID; // Get order ID from order form.
     private int prevItemPrice;
+    private int intent_code;
 
     private int totalItemPrice;
 
@@ -99,12 +103,12 @@ public class addMoreItem extends AppCompatActivity {
 
                 totalItemPrice = prevItemPrice + itemPrice;
 
-                if(isFragile){
+                if (isFragile) {
                     itemPrice += 10000;
                 }
 
                 totalPrice += itemPrice;
-                totalWeight += (int)weight;
+                totalWeight += (int) weight;
                 totalVolume += (int) volume;
 
                 progressBar4.setVisibility(View.VISIBLE);
@@ -128,8 +132,10 @@ public class addMoreItem extends AppCompatActivity {
 
                         Toast.makeText(getApplicationContext(), "New item has added. Make a payment now. ", Toast.LENGTH_LONG).show();
 
-                        // Go to payment activity here !
-                        // ...
+                        Intent i = new Intent(addMoreItem.this, CheckoutActivity.class);
+                        // Add extra orderID & others here
+                        startActivity(i);
+                        finish();
                     }
 
                     @Override
@@ -168,14 +174,14 @@ public class addMoreItem extends AppCompatActivity {
                 // -------------------- CALCULATION ------------------
                 itemPrice = ((int) volume * volumePrice) + ((int) weight * weightPrice);
 
-                if(isFragile){
+                if (isFragile) {
                     itemPrice += 10000;
                 }
 
                 totalItemPrice = prevItemPrice + itemPrice;
 
                 totalPrice += itemPrice;
-                totalWeight += (int)weight;
+                totalWeight += (int) weight;
                 totalVolume += (int) volume;
 
                 progressBar4.setVisibility(View.VISIBLE);
@@ -197,8 +203,6 @@ public class addMoreItem extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         progressBar4.setVisibility(View.GONE);
 
-                        finish();
-
                         Toast.makeText(getApplicationContext(), "New item has added. Add new item now.", Toast.LENGTH_LONG).show();
 
                         // Go to add new item activity here !
@@ -207,8 +211,9 @@ public class addMoreItem extends AppCompatActivity {
                         i.putExtra("totalWeight", totalWeight);
                         i.putExtra("totalVolume", totalVolume);
                         i.putExtra("orderID", orderID);
-                        i.putExtra("itemPrice", itemPrice);
+                        i.putExtra("itemPrice", totalItemPrice);
                         startActivity(i);
+                        finish();
                     }
 
                     @Override
@@ -221,7 +226,33 @@ public class addMoreItem extends AppCompatActivity {
 
             }
         });
-
-
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Cancellation of Add Item");
+        dialog.setMessage("Are you sure to cancel adding new item?");
+        dialog.setPositiveButton("Yes, still keep my previous order.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(addMoreItem.this, CheckoutActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        dialog.setNegativeButton("I want to cancel my order entirely", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Do deletion of order and item collection here based on last orderID.
+
+                Intent intent = new Intent(getApplicationContext(), ServiceActivity.class);
+                finish();
+            }
+        });
+
+        dialog.show();
+    }
+
 }

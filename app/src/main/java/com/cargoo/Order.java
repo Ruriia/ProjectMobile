@@ -19,7 +19,7 @@ public class Order {
 
     private float distance;
     private int deliveryPrice;
-    private int itemPrice;
+    private int totalItemPrice;
 
     private float totalWeight;
     private float totalVolume;
@@ -30,7 +30,9 @@ public class Order {
 
     }
 
-    public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim, String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, String deliveryDate, float distance, int deliveryPrice, float totalWeight, float totalVolume, int itemPrice, int totalPrice) {
+    public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim
+            , String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, String deliveryDate, float distance
+            , int deliveryPrice, int totalItemPrice, float totalWeight, float totalVolume, int totalPrice) {
         this.orderID = orderID;
         this.userID = userID;
         this.orderDate = orderDate;
@@ -44,9 +46,9 @@ public class Order {
         this.deliveryDate = deliveryDate;
         this.distance = distance;
         this.deliveryPrice = deliveryPrice;
+        this.totalItemPrice = totalItemPrice;
         this.totalWeight = totalWeight;
         this.totalVolume = totalVolume;
-        this.itemPrice = itemPrice;
         this.totalPrice = totalPrice;
     }
 
@@ -154,6 +156,14 @@ public class Order {
         this.deliveryPrice = deliveryPrice;
     }
 
+    public int getTotalItemPrice() {
+        return totalItemPrice;
+    }
+
+    public void setTotalItemPrice(int totalItemPrice) {
+        this.totalItemPrice = totalItemPrice;
+    }
+
     public float getTotalWeight() {
         return totalWeight;
     }
@@ -168,14 +178,6 @@ public class Order {
 
     public void setTotalVolume(float totalVolume) {
         this.totalVolume = totalVolume;
-    }
-
-    public int getItemPrice() {
-        return itemPrice;
-    }
-
-    public void setItemPrice(int itemPrice) {
-        this.itemPrice = itemPrice;
     }
 
     public int getTotalPrice() {

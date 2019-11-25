@@ -680,7 +680,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="+ Moretem" />
+                    android:text="+ More Item" />
 
                 <Button
                     android:id="@+id/btnDone"
