@@ -2,13 +2,17 @@ package com.cargoo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,18 +68,38 @@ public class LoginActivity extends AppCompatActivity {
         inputEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                imageView.setVisibility(View.GONE);
+                    imageView.setVisibility(View.GONE);
             }
         });
 
         inputPass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                imageView.setVisibility(View.GONE);
+                    imageView.setVisibility(View.GONE);
             }
         });
-        
 
+        inputEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView.setVisibility(View.VISIBLE);
+                InputMethodManager input = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        });
+
+        inputPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageView.setVisibility(View.VISIBLE);
+                InputMethodManager input = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
