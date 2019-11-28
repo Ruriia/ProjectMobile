@@ -33,7 +33,9 @@
             android:clickable="true"
             android:ems="10"
             android:hint="E-Mail"
-            android:inputType="textEmailAddress" />
+            android:windowSoftInputMode="adjustResize"
+            android:inputType="textEmailAddress"
+            android:clickable="true"/>
 
         <EditText
             android:id="@+id/inputPass"
@@ -45,6 +47,7 @@
             android:background="@drawable/rounded_corner"
             android:ems="10"
             android:hint="Password"
+            android:windowSoftInputMode="adjustResize"
             android:inputType="textPassword" />
 
         <Button
