@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener fbAuthStateListener;
     private ProgressBar progressBar2;
     private ImageView imageView;
+    private long backPressedTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +58,24 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
-        
+
+
+
         inputEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 imageView.setVisibility(View.GONE);
             }
         });
+
+        inputPass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                imageView.setVisibility(View.GONE);
+            }
+        });
+        
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +122,19 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
+    }
     @Override
     protected void onStart(){
         super.onStart();
