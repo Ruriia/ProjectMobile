@@ -5,13 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.Service;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -21,9 +26,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 public class addMoreItem extends AppCompatActivity {
 
+    private static final int image_id = 1;
+    Button upload;
+    ImageView previewimage;
+    Uri selectedImage;
+    private StorageReference mStorageRef;
     // Variables that gotten from Intent
     private int totalPrice; // To update totalPrice in coll. Orders
     private int totalWeight; // To update totalWeight in coll. Orders
@@ -46,11 +57,27 @@ public class addMoreItem extends AppCompatActivity {
 
     DatabaseReference dbOrder, dbItems;
 
+
+    private String uploadImage(String iditem){
+        String extend = getExtension(selectedImage);
+        String path =   "orderimage/"+iditem+extend;
+        StorageReference ref = mStorageRef.child(path);
+        ref.putFile(selectedImage);
+        return path;
+    }
+
+    private String getExtension(Uri uri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mtm = MimeTypeMap.getSingleton();
+        return mtm.getExtensionFromMimeType(cr.getType(uri));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_more_item);
 
+        upload = findViewById(R.id.btnUploadimage);
         btnDone = findViewById(R.id.btnDone);
         btnAddItem = findViewById(R.id.btnAddItem);
         btnCancel = findViewById(R.id.btnCancel);
@@ -78,6 +105,14 @@ public class addMoreItem extends AppCompatActivity {
         totalVolume = i.getIntExtra("totalVolume", 0);
         orderID = i.getStringExtra("orderID");
         prevItemPrice = i.getIntExtra("itemPrice", 0);
+
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galery, image_id);
+            }
+        });
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,10 +146,12 @@ public class addMoreItem extends AppCompatActivity {
                 totalWeight += (int) weight;
                 totalVolume += (int) volume;
 
+                String filepath = uploadImage(itemID);
+
                 progressBar4.setVisibility(View.VISIBLE);
 
                 // --------- INPUT "ITEM" TO DATABASE -----------
-                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile);
+                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile, filepath);
                 dbItems.child(itemID).setValue(dataItems);
 
                 // -------- UPDATE "ORDER" COLLECTION ------------
@@ -185,10 +222,11 @@ public class addMoreItem extends AppCompatActivity {
                 totalWeight += (int) weight;
                 totalVolume += (int) volume;
 
+                String filepath = uploadImage(itemID);
                 progressBar4.setVisibility(View.VISIBLE);
 
                 // --------- INPUT "ITEM" TO DATABASE -----------
-                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile);
+                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile,filepath);
                 dbItems.child(itemID).setValue(dataItems);
 
                 // -------- UPDATE "ORDER" COLLECTION ------------
@@ -255,5 +293,7 @@ public class addMoreItem extends AppCompatActivity {
 
         dialog.show();
     }
+
+
 
 }
