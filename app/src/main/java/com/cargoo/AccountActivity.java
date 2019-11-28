@@ -10,9 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AccountActivity extends Fragment {
 
+    private FirebaseAuth firebaseAuth;
+    private TextView btnlogout;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -25,6 +28,20 @@ public class AccountActivity extends Fragment {
                 startActivity(i);
             }
         });
+
+        btnlogout = v.findViewById(R.id.btnlogout);
+        btnlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    firebaseAuth.getInstance().signOut();
+                    Intent i = new Intent(getActivity(),
+                            LoginActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+            }
+        });
+
         return v;
     }
 }
