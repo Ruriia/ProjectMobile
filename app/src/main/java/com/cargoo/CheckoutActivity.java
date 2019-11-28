@@ -37,7 +37,6 @@ import java.util.List;
 public class CheckoutActivity extends AppCompatActivity {
 
     private RecyclerView rvItem;
-    ProgressBar progressBar5;
     private List<Items> itemLst = new ArrayList();
     private FirebaseRecyclerAdapter<Items, ItemHolder> itemCheckoutAdapter;
 
@@ -47,8 +46,6 @@ public class CheckoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
-
-        progressBar5 = findViewById(R.id.progressBar5);
 
         // Init view
         rvItem = findViewById(R.id.rvItem);
@@ -131,7 +128,6 @@ public class CheckoutActivity extends AppCompatActivity {
         if(itemCheckoutAdapter != null) {
             Log.d("DatabaseAda", "Datanya ada bang...");
             itemCheckoutAdapter.startListening();
-            progressBar5.setVisibility(View.GONE);
         }else{
             Toast.makeText(getApplicationContext(), "Data kosong", Toast.LENGTH_LONG).show();
             Log.e("ErrorOi", "Database kosong");
