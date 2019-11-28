@@ -203,7 +203,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), databaseError.getCode(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -381,7 +381,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 String userID = fbAuth.getCurrentUser().getUid(); // Retrieve from FB Authentication
 
                 Date date = Calendar.getInstance().getTime();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 String orderDate = dateFormat.format(date);
 
                 String orderStatus = "Pending";

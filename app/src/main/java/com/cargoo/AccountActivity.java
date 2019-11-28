@@ -19,6 +19,8 @@ public class AccountActivity extends Fragment {
 
     private FirebaseAuth firebaseAuth;
     private TextView btnlogout;
+
+    private TextView txtHistory;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +45,14 @@ public class AccountActivity extends Fragment {
                             Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
                     getActivity().finish();
+            }
+        });
+
+        txtHistory = v.findViewById(R.id.txtHistory);
+        txtHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), HistoryActivity.class));
             }
         });
 

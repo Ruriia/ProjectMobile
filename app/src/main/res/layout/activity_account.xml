@@ -73,7 +73,7 @@
             android:textColor="#000000"
             android:textAlignment="center"
             android:layout_marginTop="15dp"
-            android:id="@+id/btnhistory"
+            android:id="@+id/txtHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="History" />

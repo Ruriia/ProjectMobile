@@ -25,11 +25,6 @@ public class Order {
     private float totalVolume;
     private int totalPrice;
 
-
-    public Order(){
-
-    }
-
     public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim
             , String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, String deliveryDate, float distance
             , int deliveryPrice, float totalWeight, float totalVolume, int totalItemPrice, int totalPrice) {
@@ -186,5 +181,9 @@ public class Order {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Order(){
+
     }
 }

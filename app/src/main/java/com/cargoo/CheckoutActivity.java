@@ -115,7 +115,8 @@ public class CheckoutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(CheckoutActivity.this, activity_order_complete.class);
-                i.putExtra("totalPrice", refTotalPrices);
+//                i.putExtra("totalPrice", refTotalPrices);
+                i.putExtra("orderID", orderID);
                 startActivity(i);
                 finish();
             }
@@ -149,8 +150,7 @@ public class CheckoutActivity extends AppCompatActivity {
                 .orderByChild("orderID")
                 .equalTo(orderID);
 
-        FirebaseRecyclerOptions<Items> options =
-                new FirebaseRecyclerOptions.Builder<Items>()
+        FirebaseRecyclerOptions<Items> options = new FirebaseRecyclerOptions.Builder<Items>()
                         .setQuery(qCheckoutItem, Items.class)
                         .build();
 
