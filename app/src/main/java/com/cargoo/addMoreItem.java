@@ -134,6 +134,7 @@ public class addMoreItem extends AppCompatActivity {
 
                         Intent i = new Intent(addMoreItem.this, CheckoutActivity.class);
                         // Add extra orderID & others here
+                        i.putExtra("orderID", orderID);
                         startActivity(i);
                         finish();
                     }

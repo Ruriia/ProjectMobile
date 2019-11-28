@@ -42,6 +42,11 @@ public class CheckoutActivity extends AppCompatActivity {
 
     private String orderID;
 
+    private TextView txtDestAddress, txtPickupAddress, txtPickupDate, txtDeliveryPrices, txtTotalPrices;
+
+    private String refDestName, refDestAddress, refDestFullAddress, refPickupName, refPickupAddress, refPickupFullAddress, refPickupDate;
+    private String refDeliveryPrices, refTotalPrices;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,24 +54,63 @@ public class CheckoutActivity extends AppCompatActivity {
 
         // Init view
         rvItem = findViewById(R.id.rvItem);
-        rvItem.setHasFixedSize(true);
+//        rvItem.setHasFixedSize(true);
         rvItem.setLayoutManager(new LinearLayoutManager(this));
+
+        txtDestAddress = findViewById(R.id.txtDestAddress);
+        txtPickupAddress = findViewById(R.id.txtPickupAddress);
+        txtPickupDate = findViewById(R.id.txtPickupDate);
+        txtDeliveryPrices = findViewById(R.id.txtDeliveryPrices);
+        txtTotalPrices = findViewById(R.id.txtTotalPrices);
 
         Intent i = getIntent();
         orderID = i.getStringExtra("orderID");
 
 //        Toast.makeText(getApplicationContext(), "Order ID: " + orderID, Toast.LENGTH_LONG).show();
 
-        // Retrieve data
-        retrieveData();
+        // Retrieve Item data
+        retrieveItemData();
 
-        // Set data
-        setData();
+        // Set Item data
+        setItemData();
+
+        // ------------- Retrieve Delivery Data -------------
+        Query qDeliveryCheckout = FirebaseDatabase.getInstance().getReference().child("Orders").child(orderID);
+
+        qDeliveryCheckout.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                Toast.makeText(CheckoutActivity.this, dataSnapshot.child("namaPenerima").getValue().toString(), Toast.LENGTH_LONG).show();
+                refDestName = dataSnapshot.child("namaPenerima").getValue(String.class);
+                refDestAddress = dataSnapshot.child("AlamatPenerima").child("Full").getValue(String.class);
+                refDestFullAddress = refDestName + ", " + refDestAddress;
+
+                refPickupName = dataSnapshot.child("namaPengirim").getValue(String.class);
+                refPickupAddress = dataSnapshot.child("AlamatPengirim").child("Full").getValue(String.class);
+                refPickupFullAddress = refPickupName + ", " + refPickupAddress;
+
+                refPickupDate = dataSnapshot.child("deliveryDate").getValue(String.class);
+
+                refDeliveryPrices = "Rp " + String.valueOf(dataSnapshot.child("deliveryPrice").getValue(Integer.class));
+                refTotalPrices = "Rp " + String.valueOf(dataSnapshot.child("totalPrice").getValue(Integer.class));
+
+                txtDestAddress.setText(refDestFullAddress);
+                txtPickupAddress.setText(refPickupFullAddress);
+                txtPickupDate.setText(refPickupDate);
+                txtDeliveryPrices.setText(refDeliveryPrices);
+                txtTotalPrices.setText(refTotalPrices);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(), databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
 
 
     }
 
-    private void retrieveData() {
+    private void retrieveItemData() {
         itemLst.clear();
 
         DatabaseReference dbItem = FirebaseDatabase.getInstance().getReference().child("Items");
@@ -77,19 +121,18 @@ public class CheckoutActivity extends AppCompatActivity {
                 for(DataSnapshot itemSnapShot: dataSnapshot.getChildren()){
                     Items items = itemSnapShot.getValue(Items.class);
                     itemLst.add(items);
-//                    Log.d("Success", "Database ada");
-//                    Toast.makeText(getApplicationContext(), "Database ada", Toast.LENGTH_LONG).show();
+                    Log.d("CheckDatabase", "Database ada");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("ERROR", "" + databaseError.getMessage());
+                Log.d("CheckDatabase", "" + databaseError.getMessage());
             }
         });
     }
 
-    private void setData() {
+    private void setItemData() {
         Query qCheckoutItem = FirebaseDatabase.getInstance().getReference().child("Items")
                 .orderByChild("orderID")
                 .equalTo(orderID);
@@ -102,7 +145,7 @@ public class CheckoutActivity extends AppCompatActivity {
         itemCheckoutAdapter = new FirebaseRecyclerAdapter<Items, ItemHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ItemHolder holder, int position, @NonNull Items model) {
-                holder.setIsRecyclable(false);
+//                holder.setIsRecyclable(false);
                 holder.setItemName(model.getItemName());
                 holder.setQuantity(model.getQuantity());
                 holder.setFragileStatus(model.isFragileStatus());
@@ -126,11 +169,11 @@ public class CheckoutActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         if(itemCheckoutAdapter != null) {
-            Log.d("DatabaseAda", "Datanya ada bang...");
+            Log.d("KeberadaanData", "Datanya ada untuk untuk ID order: " + orderID);
             itemCheckoutAdapter.startListening();
         }else{
             Toast.makeText(getApplicationContext(), "Data kosong", Toast.LENGTH_LONG).show();
-            Log.e("ErrorOi", "Database kosong");
+            Log.d("KeberadaanData", "No Data");
         }
         super.onStart();
     }

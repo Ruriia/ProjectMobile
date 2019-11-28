@@ -32,7 +32,7 @@ public class Order {
 
     public Order(String orderID, String userID, String orderDate, String orderStatus, String namaPengirim, String emailPengirim
             , String telpPengirim, String namaPenerima, String emailPenerima, String telpPenerima, String deliveryDate, float distance
-            , int deliveryPrice, int totalItemPrice, float totalWeight, float totalVolume, int totalPrice) {
+            , int deliveryPrice, float totalWeight, float totalVolume, int totalItemPrice, int totalPrice) {
         this.orderID = orderID;
         this.userID = userID;
         this.orderDate = orderDate;
