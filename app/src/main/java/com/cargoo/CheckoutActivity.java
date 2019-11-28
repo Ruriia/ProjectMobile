@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,8 @@ public class CheckoutActivity extends AppCompatActivity {
 
     private String refDestName, refDestAddress, refDestFullAddress, refPickupName, refPickupAddress, refPickupFullAddress, refPickupDate;
     private String refDeliveryPrices, refTotalPrices;
+
+    private Button btnPayment, btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +110,16 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
 
-
+        btnPayment = findViewById(R.id.btnPayment);
+        btnPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CheckoutActivity.this, activity_order_complete.class);
+                i.putExtra("totalPrice", refTotalPrices);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 
     private void retrieveItemData() {

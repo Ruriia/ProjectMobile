@@ -13,134 +13,46 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/back2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:text="Back"
-                android:textColor="#0A0909"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="-10dp"
+                android:layout_height="35dp"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="-35dp"
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+                    android:fontFamily="@font/overlock_bold"
+                    android:text="History"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="200dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|fill_vertical"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:ellipsize="marquee"
-                        android:gravity="center|center_vertical"
-                        android:scrollbarSize="4dp"
-                        android:text="..."
-                        android:textAlignment="center"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:shadowColor="#00E71111"
-                        android:text="1"
-                        android:textAlignment="center"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button3"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="2"
-                        android:textAlignment="center"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button4"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="3"
-                        android:textAlignment="center"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <Button
-                        android:id="@+id/button5"
-                        android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="..."
-                        android:textAlignment="center"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
+                <Button
+                    android:id="@+id/btnBack"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_gravity="end|center_vertical"
+                    android:background="@drawable/rounded_corner"
+                    android:backgroundTint="@color/colorNegative"
+                    android:fontFamily="@font/overlock_bold"
+                    android:text="Back"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorGray"
+                    android:textSize="16sp" />
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHistory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_marginTop="15dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/editText8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:inputType="textPersonName"
-                            android:text="Transaction No. : TR001 "
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </ScrollView>

@@ -8,25 +8,40 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:gravity="center"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="match_parent"
-            android:layout_height="214dp"
-            app:srcCompat="@drawable/order_done" />
-
-        <TextView
-            android:id="@+id/textView38"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Transaction Success!"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/payment" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Transaction Success!"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorDarkBlue"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView39"
@@ -34,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/nunito_light"
             android:gravity="center"
             android:text="For now, you can make a payment" />
 
@@ -42,46 +58,69 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/nunito_light"
             android:gravity="center"
             android:text="only by Bank Transfer to:" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="26dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginStart="140dp"
-                android:background="#03A9F4"
-                android:foregroundGravity="center"
-                app:srcCompat="?attr/actionModeCopyDrawable" />
+
+            <ImageView
+                android:id="@+id/imageCopy"
+                android:layout_width="36dp"
+                android:layout_height="28dp"
+                android:clickable="true"
+                app:srcCompat="@drawable/copy_icon" />
 
             <TextView
-                android:id="@+id/textView34"
+                android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="140dp"
-                android:layout_weight="1"
-                android:foregroundGravity="center|center_horizontal"
-                android:gravity="center"
-                android:text="1234-567-8901" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="5211070987" />
+
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView41"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="a.n. GLOBAL CARGO INDONESIA" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="a.n. GLOBAL CARGO INDONESIA" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTotalPriceDone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:text="Rp xxx"
+                android:textSize="18sp" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="410dp"
@@ -104,31 +143,29 @@
                 android:text="and send it to Whatsapp" />
 
             <TextView
-                android:id="@+id/textView65"
+                android:layout_marginTop="5dp"
+                android:id="@+id/textWA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="+62 8123 4567 890" />
+                android:text="+62 815 4616 4842"
+                android:textColor="@color/colorPrimaryBlue"
+                android:fontFamily="@font/nunito_semibold"/>
 
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
             android:layout_gravity="center"
-            app:cardBackgroundColor="#009688"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="3dp">
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:backgroundTint="#009688"
-                android:gravity="center"
-                android:text="DONE"
-                android:textStyle="bold" />
-        </androidx.cardview.widget.CardView>
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/colorPrimaryGreen"
+            android:text="Done"
+            android:textStyle="bold"
+            android:textColor="@color/colorGray"
+            android:fontFamily="@font/nunito_semibold"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
 
