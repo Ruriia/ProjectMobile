@@ -56,11 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
-
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
+        
         inputEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
