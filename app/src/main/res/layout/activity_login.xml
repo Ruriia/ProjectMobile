@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/welcome_gradient"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusableInTouchMode="true">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -79,8 +80,8 @@
                 style="?android:attr/progressBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:theme="@style/customProgressBar"/>
+                android:theme="@style/customProgressBar"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <TextView

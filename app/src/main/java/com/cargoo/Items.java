@@ -11,9 +11,11 @@ public class Items {
     private float height;
     private float weight;
     private float volume;
+    private int itemPrice;
     private boolean fragileStatus;
 
-    public Items(String itemID, String orderID, String itemName, int quantity, String unit, float width, float length, float height, float weight, float volume, boolean fragileStatus) {
+    public Items(String itemID, String orderID, String itemName, int quantity, String unit, float width, float length, float height
+            , float weight, float volume, int itemPrice, boolean fragileStatus) {
         this.itemID = itemID;
         this.orderID = orderID;
         this.itemName = itemName;
@@ -24,6 +26,7 @@ public class Items {
         this.height = height;
         this.weight = weight;
         this.volume = volume;
+        this.itemPrice = itemPrice;
         this.fragileStatus = fragileStatus;
     }
 
@@ -113,5 +116,13 @@ public class Items {
 
     public void setFragileStatus(boolean fragileStatus) {
         this.fragileStatus = fragileStatus;
+    }
+
+    public int getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
     }
 }

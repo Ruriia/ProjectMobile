@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OrderFormActivity">
+    tools:context=".addMoreItem">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -55,301 +55,6 @@
                     android:textColor="@color/colorGray"
                     android:textSize="16sp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/dataPengirim"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Data Pengirim"
-                    android:textColor="@color/colorPrimaryBlue"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Nama pengirim" />
-
-                <EditText
-                    android:id="@+id/edtNamaPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/textView30"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Telp pengirim" />
-
-                <EditText
-                    android:id="@+id/edtTelpPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="phone" />
-
-                <TextView
-                    android:id="@+id/textView31"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Email pengirim" />
-
-                <EditText
-                    android:id="@+id/edtEmailPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textEmailAddress" />
-
-                <TextView
-                    android:id="@+id/textView32"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Alamat pengirim" />
-
-                <EditText
-                    android:id="@+id/edtAlamatPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textMultiLine|textCapWords"
-                    android:lines="3" />
-
-                <TextView
-                    android:id="@+id/textView33"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Provinsi pengirim" />
-
-                <EditText
-                    android:id="@+id/edtProvinsiPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/textView43"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Kota pengirim" />
-
-                <EditText
-                    android:id="@+id/edtKotaPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/textView44"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Kecamatan pengirim" />
-
-                <EditText
-                    android:id="@+id/edtKecamatanPengirim"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/textView45"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Kode pos pengirim" />
-
-                <EditText
-                    android:id="@+id/edtKodePosPengirim"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="number" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/dataPenerima"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/titleDataPenerima"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Data Penerima"
-                    android:textColor="@color/colorPrimaryBlue"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView46"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Nama penerima" />
-
-                <EditText
-                    android:id="@+id/edtNamaPenerima"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/textView47"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Telp penerima" />
-
-                <EditText
-                    android:id="@+id/edtTelpPenerima"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="phone" />
-
-                <TextView
-                    android:id="@+id/textView48"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Email penerima" />
-
-                <EditText
-                    android:id="@+id/edtEmailPenerima"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textEmailAddress" />
-
-                <TextView
-                    android:id="@+id/textView49"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Alamat penerima" />
-
-                <EditText
-                    android:id="@+id/edtAlamatPenerima"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textMultiLine|textCapWords"
-                    android:lines="3" />
-
-                <TextView
-                    android:id="@+id/textView50"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Provinsi penerima" />
-
-                <EditText
-                    android:id="@+id/edtProvinsiPenerima"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/textView51"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Kota penerima" />
-
-                <EditText
-                    android:id="@+id/edtKotaPenerima"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/textView52"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Kecamatan penerima" />
-
-                <EditText
-                    android:id="@+id/edtKecamatanPenerima"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/textView53"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_semibold"
-                    android:text="Kode Pos Pengirim" />
-
-                <EditText
-                    android:id="@+id/edtKodePosPenerima"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout
@@ -619,7 +324,7 @@
                         />
 
                     <Button
-                        android:id="@+id/uploadimage"
+                        android:id="@+id/btnUploadimage"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="Select Image"/>
@@ -680,7 +385,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="+ More Item" />
+                    android:text="+ Moretem" />
 
                 <Button
                     android:id="@+id/btnDone"
@@ -699,7 +404,7 @@
                 android:layout_marginTop="10dp">
 
                 <ProgressBar
-                    android:id="@+id/progressBar3"
+                    android:id="@+id/progressBar4"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -707,12 +412,5 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
