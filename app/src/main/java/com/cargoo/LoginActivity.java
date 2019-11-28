@@ -124,8 +124,19 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        imageView.setVisibility(View.VISIBLE);
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+            imageView.setVisibility(View.VISIBLE);
+        }
+
+        backPressedTime = System.currentTimeMillis();
     }
+
     @Override
     protected void onStart(){
         super.onStart();
