@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -31,6 +33,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -43,8 +47,9 @@ import java.util.Map;
 public class OrderFormActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private static final int image_id = 1;
     Button upload, btnDone;
-    TextView imagename;
     ImageView previewimage;
+    Uri selectedImage;
+    private StorageReference mStorageRef;
 
     private EditText edtNamaPengirim, edtTelpPengirim, edtEmailPengirim, edtAlamatPengirim, edtProvinsiPengirim, edtKotaPengirim, edtKecamatanPengirim, edtKodePosPengirim;
     private EditText edtNamaPenerima, edtTelpPenerima, edtEmailPenerima, edtAlamatPenerima, edtProvinsiPenerima, edtKotaPenerima, edtKecamatanPenerima, edtKodePosPenerima;
@@ -72,6 +77,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
         setContentView(R.layout.activity_order_form);
         upload = findViewById(R.id.uploadimage);
         previewimage = findViewById(R.id.previewimage);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         edtNamaPengirim = findViewById(R.id.edtNamaPengirim);
         edtTelpPengirim = findViewById(R.id.edtTelpPengirim);
@@ -271,9 +277,19 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == image_id && resultCode == RESULT_OK && data != null) {
-            Uri selectedImage = data.getData();
+            selectedImage = data.getData();
             previewimage.setImageURI(selectedImage);
         }
+    }
+
+    private void fileUploader(){
+
+    }
+
+    private String getExtension(Uri uri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mtm = MimeTypeMap.getSingleton();
+        return mtm.getExtensionFromMimeType(cr.getType(uri));
     }
 
 
