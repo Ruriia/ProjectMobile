@@ -57,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        attachKeyb
         inputEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
