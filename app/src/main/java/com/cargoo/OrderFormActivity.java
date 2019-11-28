@@ -69,10 +69,9 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
     private boolean isFragile = false;
 
-    DatabaseReference dbOrder, dbItems, dbUsers;
+    private DatabaseReference dbOrder, dbItems, dbUsers;
 
     private FirebaseAuth fbAuth;
-
     private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
     private String fbUserId = fbUser.getUid();
 
@@ -150,7 +149,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                refNamaPengirim = dataSnapshot.child(fbUserId).child("name").getValue().toString();
+                refNamaPengirim = dataSnapshot.child(fbUserId).child("name").getValue(String.class);
                 refTelpPengirim = dataSnapshot.child(fbUserId).child("phone").getValue(String.class);
                 refEmailPengirim = dataSnapshot.child(fbUserId).child("email").getValue(String.class);
                 refAlamatPengirim = dataSnapshot.child(fbUserId).child("address").child("address").getValue(String.class);
@@ -319,6 +318,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                         // Go to checkout activity here !
                         Intent i = new Intent(OrderFormActivity.this, CheckoutActivity.class);
                         // Add extra orderID & others here
+                        i.putExtra("orderID", orderID);
                         startActivity(i);
                         finish();
                     }

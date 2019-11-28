@@ -110,6 +110,14 @@ public class Items {
         this.volume = volume;
     }
 
+    public int getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(int itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
     public boolean isFragileStatus() {
         return fragileStatus;
     }
@@ -118,11 +126,7 @@ public class Items {
         this.fragileStatus = fragileStatus;
     }
 
-    public int getItemPrice() {
-        return itemPrice;
-    }
+    public Items(){
 
-    public void setItemPrice(int itemPrice) {
-        this.itemPrice = itemPrice;
     }
 }

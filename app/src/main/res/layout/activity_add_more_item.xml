@@ -329,37 +329,7 @@
                         android:layout_height="wrap_content"
                         android:text="Select Image"/>
 
-
                 </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/Pengiriman"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/titlePengirimanBarang"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Tanggal Pengiriman"
-                    android:textColor="@color/colorPrimaryBlue"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edtTglPengiriman"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:clickable="true"
-                    android:focusableInTouchMode="false"/>
-
 
             </LinearLayout>
 
@@ -368,7 +338,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:orientation="horizontal">
 
                 <Button

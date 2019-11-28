@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtItemName"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="Item's name"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/nunito_light"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:text="x   "
+            android:gravity="center_vertical|end"
+            android:fontFamily="@font/nunito_light"/>
+
+        <TextView
+            android:id="@+id/txtQty"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:text="qty"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/nunito_light"/>
+
+        <TextView
+            android:id="@+id/txtFragile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Fragile"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/nunito_light"
+            android:textAlignment="center"
+            android:textColor="#d99e16"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:text="Rp   "
+            android:gravity="center_vertical|end"
+            android:fontFamily="@font/nunito_light" />
+
+        <TextView
+            android:id="@+id/txtItemPrice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="xxx"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/nunito_light"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
