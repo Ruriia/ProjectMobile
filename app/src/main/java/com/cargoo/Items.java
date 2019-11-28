@@ -13,9 +13,10 @@ public class Items {
     private float volume;
     private int itemPrice;
     private boolean fragileStatus;
+    private String imagepath;
 
     public Items(String itemID, String orderID, String itemName, int quantity, String unit, float width, float length, float height
-            , float weight, float volume, int itemPrice, boolean fragileStatus) {
+            , float weight, float volume, int itemPrice, boolean fragileStatus, String imagepath) {
         this.itemID = itemID;
         this.orderID = orderID;
         this.itemName = itemName;
@@ -28,7 +29,12 @@ public class Items {
         this.volume = volume;
         this.itemPrice = itemPrice;
         this.fragileStatus = fragileStatus;
+        this.imagepath = imagepath;
     }
+
+    public String getImagepath(){ return imagepath;}
+
+    public void setImagepath(String imagepath){ this.imagepath = imagepath;}
 
     public String getItemID() {
         return itemID;

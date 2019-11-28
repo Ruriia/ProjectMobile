@@ -29,6 +29,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,6 +44,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -51,13 +55,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class OrderFormActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private static final int image_id = 1;
     Button upload, btnDone;
     ImageView previewimage;
     Uri selectedImage;
-    private StorageReference mStorageRef;
 
     private EditText edtNamaPengirim, edtTelpPengirim, edtEmailPengirim, edtAlamatPengirim, edtProvinsiPengirim, edtKotaPengirim, edtKecamatanPengirim, edtKodePosPengirim;
     private EditText edtNamaPenerima, edtTelpPenerima, edtEmailPenerima, edtAlamatPenerima, edtProvinsiPenerima, edtKotaPenerima, edtKecamatanPenerima, edtKodePosPenerima;
@@ -89,13 +93,42 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
     // Initiate Form Auto-Fill
     private String refNamaPengirim, refTelpPengirim, refEmailPengirim, refAlamatPengirim, refProvinsiPengirim, refKotaPengirim, refKecamatanPengirim, refKodePosPengirim;
 
+
+    private String uploadImage(){
+        if(selectedImage != null) {
+            FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+            StorageReference mStorageRef = firebaseStorage.getReference();;
+            String path = "orderimage/" + UUID.randomUUID().toString() + "." + getExtension(selectedImage);
+            StorageReference ref = mStorageRef.child(path);
+            ref.putFile(selectedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                }
+            }).addOnCanceledListener(new OnCanceledListener() {
+                @Override
+                public void onCanceled() {
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+            return path;
+        }else {
+            return null;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_form);
         upload = findViewById(R.id.uploadimage);
         previewimage = findViewById(R.id.previewimage);
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+
 
         edtNamaPengirim = findViewById(R.id.edtNamaPengirim);
         edtTelpPengirim = findViewById(R.id.edtTelpPengirim);
@@ -279,9 +312,11 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 totalWeight = (int)weight;
                 totalVolume = (int) volume;
 
+                String filepath = uploadImage();
+
 
                 // --------- INPUT ITEM TO DATABASE -----------
-                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile);
+                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile, filepath);
 
                 dbItems.child(itemID).setValue(dataItems);
                 progressBar3.setVisibility(View.VISIBLE);
@@ -426,8 +461,10 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
                 progressBar3.setVisibility(View.VISIBLE);
 
+                String filepath = uploadImage();
+
                 // --------- INPUT ITEM TO DATABASE -----------
-                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile);
+                Items dataItems = new Items(itemID, orderID, itemName, quantity, unit, width, length, height, weight, volume, itemPrice, isFragile, filepath );
 
                 dbItems.child(itemID).setValue(dataItems);
 
@@ -526,10 +563,6 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
             selectedImage = data.getData();
             previewimage.setImageURI(selectedImage);
         }
-    }
-
-    private void fileUploader(){
-
     }
 
     private String getExtension(Uri uri){
