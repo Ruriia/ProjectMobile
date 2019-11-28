@@ -21,12 +21,19 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.util.UUID;
 
 public class addMoreItem extends AppCompatActivity {
 
@@ -58,12 +65,32 @@ public class addMoreItem extends AppCompatActivity {
     DatabaseReference dbOrder, dbItems;
 
 
-    private String uploadImage(String iditem){
-        String extend = getExtension(selectedImage);
-        String path =   "orderimage/"+iditem+extend;
-        StorageReference ref = mStorageRef.child(path);
-        ref.putFile(selectedImage);
-        return path;
+    private String uploadImage(){
+        if(selectedImage != null) {
+            FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+            StorageReference mStorageRef = firebaseStorage.getReference();;
+            String path = "orderimage/" + UUID.randomUUID().toString() + "." + getExtension(selectedImage);
+            StorageReference ref = mStorageRef.child(path);
+            ref.putFile(selectedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                }
+            }).addOnCanceledListener(new OnCanceledListener() {
+                @Override
+                public void onCanceled() {
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+            return path;
+        }else {
+            return null;
+        }
     }
 
     private String getExtension(Uri uri){
@@ -146,7 +173,7 @@ public class addMoreItem extends AppCompatActivity {
                 totalWeight += (int) weight;
                 totalVolume += (int) volume;
 
-                String filepath = uploadImage(itemID);
+                String filepath = uploadImage();
 
                 progressBar4.setVisibility(View.VISIBLE);
 
@@ -222,7 +249,7 @@ public class addMoreItem extends AppCompatActivity {
                 totalWeight += (int) weight;
                 totalVolume += (int) volume;
 
-                String filepath = uploadImage(itemID);
+                String filepath = uploadImage();
                 progressBar4.setVisibility(View.VISIBLE);
 
                 // --------- INPUT "ITEM" TO DATABASE -----------
