@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth fbAuth;
     private FirebaseAuth.AuthStateListener fbAuthStateListener;
     private ProgressBar progressBar2;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         inputEmail = findViewById(R.id.inputEmail);
         inputPass = findViewById(R.id.inputPass);
         fbAuth = FirebaseAuth.getInstance();
+
+        imageView = findViewById(R.id.imageView);
 
         progressBar2 = findViewById(R.id.progressBar2);
 
@@ -52,6 +56,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
+
+        attachKeyb
+        inputEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                imageView.setVisibility(View.GONE);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,4 +115,5 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         fbAuth.addAuthStateListener(fbAuthStateListener);
     }
+
 }

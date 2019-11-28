@@ -13,13 +13,14 @@
         android:orientation="vertical"
         android:focusableInTouchMode="true">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                app:srcCompat="@drawable/logo_white" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/logo_white" />
 
         <EditText
             android:id="@+id/inputEmail"
@@ -31,7 +32,8 @@
             android:background="@drawable/rounded_corner"
             android:ems="10"
             android:hint="E-Mail"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:clickable="true"/>
 
         <EditText
             android:id="@+id/inputPass"
