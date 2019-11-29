@@ -98,8 +98,8 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
         if(selectedImage != null) {
             FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
             StorageReference mStorageRef = firebaseStorage.getReference();;
-            String path = "orderimage/" + UUID.randomUUID().toString() + "." + getExtension(selectedImage);
-            StorageReference ref = mStorageRef.child(path);
+            String path = UUID.randomUUID().toString();
+            StorageReference ref = mStorageRef.child("orderimage/" + path + "." + getExtension(selectedImage));
             ref.putFile(selectedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

@@ -6,6 +6,7 @@ public class Users {
     private String phone;
     private String email;
     private String authID;
+    private String profileiamge;
 
 
     private String address;
@@ -18,11 +19,12 @@ public class Users {
 
     }
 
-    public Users(String userID, String name, String phone, String mail) {
+    public Users(String userID, String name, String phone, String mail, String profile) {
         this.userID = userID;
         this.name = name;
         this.phone = phone;
         this.email = mail;
+        this.profileiamge = profile;
     }
 
     public Users(String address, String province, String city, String district, int zip) {

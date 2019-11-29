@@ -38,7 +38,7 @@ public class ActivityLoader extends AppCompatActivity implements BottomNavigatio
         botnav.setOnNavigationItemSelectedListener(this);
     }
 
-    private boolean loadFragment(Fragment fragment) {
+    public boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
             FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();

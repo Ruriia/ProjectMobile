@@ -145,8 +145,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     // ---------------------- INPUT COMPANY DATA TO FIREBASE REALTIME DATABASE ---------------------------
                                     String userID = authID;
-
-                                    Users userdata1 = new Users(userID, companyName, phone, email);
+                                    String profile = "profileimage/defaultimage.jpg";
+                                    Users userdata1 = new Users(userID, companyName, phone, email, profile);
                                     Users userdata2 = new Users(address, province, city, district, zip); // For address
 
                                     dbUsers.child(userID).setValue(userdata1);
