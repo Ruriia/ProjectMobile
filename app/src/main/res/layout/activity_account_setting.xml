@@ -58,27 +58,29 @@
 
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_marginTop="20dp"
                     android:id="@+id/profile_image"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
-                    android:layout_centerHorizontal="true"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/defaultprofile"
                     app:civ_border_width="2dp"/>
 
                 <Button
                     android:id="@+id/btnChangeProfile"
-                    android:layout_width="150dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="Edit Picture"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="120dp"/>
-            </RelativeLayout>
+                    android:layout_marginTop="10dp"
+                    android:textAllCaps="false"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/dataPerusahaan"

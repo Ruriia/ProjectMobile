@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:state_focused="true">
         <shape>
-            <solid android:color="#FF8000"/>
+            <solid android:color="#F9F8FB"/>
             <stroke
                 android:width="2.3dp"
-                android:color="#FF8000" />
+                android:color="#F9F8FB" />
             <corners
                 android:radius="8dp" />
         </shape>
@@ -13,10 +13,10 @@
 
     <item android:state_pressed="true" android:state_focused="false">
         <shape>
-            <solid android:color="#FF8000"/>
+            <solid android:color="#F9F8FB"/>
             <stroke
                 android:width="2.3dp"
-                android:color="#FF8000" />
+                android:color="#F9F8FB" />
             <corners
                 android:radius="8dp" />
         </shape>
@@ -27,7 +27,7 @@
             <solid android:color="#FFFFFF"/>
             <stroke
                 android:width="2.3dp"
-                android:color="#FF8000" />
+                android:color="#F9F8FB" />
             <corners
                 android:radius="8dp" />
         </shape>

@@ -71,6 +71,8 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
     private Spinner spinUnit;
     private CheckBox cbFragile;
 
+    private Button btnBack;
+
     private boolean isFragile = false;
 
     private DatabaseReference dbOrder, dbItems, dbUsers;
@@ -163,10 +165,19 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
         final ProgressBar progressBar3 = findViewById(R.id.progressBar3);
 
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         fbAuth = FirebaseAuth.getInstance();
 
         dbOrder = FirebaseDatabase.getInstance().getReference().child("Orders");
         dbItems = FirebaseDatabase.getInstance().getReference().child("Items");
+
 
         // READ USER'S INFO
         dbUsers = FirebaseDatabase.getInstance().getReference().child("Users");

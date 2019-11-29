@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +54,7 @@ public class AccountActivity extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_account, container, false);
-        final TextView company = v.findViewById(R.id.textView18);
+        final TextView company = v.findViewById(R.id.txtCompanyName);
         final ImageView profile = v.findViewById(R.id.profile_image);
         dbUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         Query q1 = FirebaseDatabase.getInstance().getReference().child("Users")

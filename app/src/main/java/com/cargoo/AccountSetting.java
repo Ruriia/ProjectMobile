@@ -63,6 +63,8 @@ public class AccountSetting extends AppCompatActivity {
     private String fbUserId = fbUser.getUid();
     private String fbUserEmail = fbUser.getEmail();
 
+    private Button btnBack;
+
     // Initiate Form Auto-Fill
     private String refNamaPerusahaan, refTelpPerusahaan, refEmailPerusahaan, refAlamatPerusahaan, refProvinsiPerusahaan, refKotaPerusahaan, 
             refKecamatanPerusahaan, refKodePosPerusahaan, refProfilePicture;
@@ -140,6 +142,14 @@ public class AccountSetting extends AppCompatActivity {
 
         final ProgressBar pbAccSetting = findViewById(R.id.pbAccSetting);
 
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         fbAuth = FirebaseAuth.getInstance();
 
         // READ USER'S INFO
@@ -160,8 +170,6 @@ public class AccountSetting extends AppCompatActivity {
                 refKotaPerusahaan = dataSnapshot.child(fbUserId).child("address").child("city").getValue(String.class);
                 refKecamatanPerusahaan = dataSnapshot.child(fbUserId).child("address").child("district").getValue(String.class);
                 refKodePosPerusahaan = String.valueOf(dataSnapshot.child(fbUserId).child("address").child("zipcode").getValue(Integer.class));
-
-
 
                 edtNamaPerusahaan.setText(refNamaPerusahaan);
                 edtEmailPerusahaan.setText(refEmailPerusahaan);

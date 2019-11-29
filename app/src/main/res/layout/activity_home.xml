@@ -61,7 +61,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/txtCompanyName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/overlock_black"
@@ -113,7 +113,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Check all" />
+                            android:text="Check all >"
+                            android:gravity="center_vertical|end"/>
 
                     </LinearLayout>
 
@@ -123,7 +124,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/titleProduct"
-                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="20dp"
                     app:alignmentMode="alignMargins"
                     app:columnCount="3"
@@ -131,13 +131,15 @@
                     app:rowCount="1">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/cvDelivery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
+                        android:layout_margin="5dp"
                         app:cardCornerRadius="12dp"
                         app:cardElevation="6dp"
                         app:layout_columnWeight="1"
-                        app:layout_rowWeight="1">
+                        app:layout_rowWeight="1"
+                        android:clickable="true">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -157,8 +159,15 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="2"
-                                    android:background="@color/colorGray"
                                     android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="20dp"
+                                        android:src="@drawable/service_truck_bg"
+                                        android:layout_weight="1"
+                                        android:scaleType="centerCrop"
+                                        android:adjustViewBounds="true"/>
 
                                 </LinearLayout>
 
@@ -171,18 +180,26 @@
                                     android:paddingLeft="5dp"
                                     android:paddingRight="5dp">
 
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
-
                                     <TextView
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
+                                        android:layout_height="wrap_content"
                                         android:fontFamily="@font/overlock_black"
-                                        android:text="Coming Soon!"
+                                        android:text="Item Delivery"
                                         android:textSize="11sp"
-                                        android:textAlignment="center"
-                                        />
+                                        android:textAlignment="center" />
+
+                                    <Button
+                                        android:layout_marginTop="5dp"
+                                        android:id="@+id/btnDelivery"
+                                        android:layout_width="72dp"
+                                        android:layout_height="20dp"
+                                        android:text="Order Now"
+                                        android:textAllCaps="false"
+                                        android:background="@drawable/rounded_corner"
+                                        android:backgroundTint="@color/colorPrimaryGreen"
+                                        android:textColor="@color/colorGray"
+                                        android:textSize="8dp"
+                                        android:layout_gravity="center"/>
 
                                 </LinearLayout>
 
@@ -195,7 +212,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
+                        android:layout_margin="5dp"
                         app:cardCornerRadius="12dp"
                         app:cardElevation="6dp"
                         app:layout_columnWeight="1"
@@ -255,7 +272,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
+                        android:layout_margin="5dp"
                         app:cardCornerRadius="12dp"
                         app:cardElevation="6dp"
                         app:layout_columnWeight="1"
@@ -320,7 +337,7 @@
                 android:id="@+id/partThree"
                 android:layout_width="match_parent"
                 android:layout_height="270dp"
-                android:layout_marginTop="-20dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/green_gradient"
                 android:paddingLeft="20dp"
                 android:paddingTop="20dp"
@@ -356,7 +373,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Check all" />
+                            android:text="Check all >"
+                            android:gravity="center_vertical|end"/>
 
                     </LinearLayout>
 
@@ -376,7 +394,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
+                        android:layout_margin="5dp"
                         app:cardCornerRadius="12dp"
                         app:cardElevation="6dp"
                         app:layout_columnWeight="1"
@@ -437,7 +455,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
+                        android:layout_margin="5dp"
                         app:cardCornerRadius="12dp"
                         app:cardElevation="6dp"
                         app:layout_columnWeight="1"
@@ -497,7 +515,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
+                        android:layout_margin="5dp"
                         app:cardCornerRadius="12dp"
                         app:cardElevation="6dp"
                         app:layout_columnWeight="1"

@@ -613,16 +613,19 @@
 
                     <ImageView
                         android:id="@+id/previewimage"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="150dp"
+                        android:maxHeight="150dp"
                         android:layout_marginStart="7dp"
                         />
 
                     <Button
                         android:id="@+id/uploadimage"
-                        android:layout_width="150dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Select Image"/>
+                        android:text="Select Image"
+                        android:textAllCaps="false"/>
 
 
                 </LinearLayout>
@@ -669,26 +672,44 @@
                 <Button
                     android:id="@+id/btnCancel"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Cancel" />
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:background="@drawable/rounded_corner"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="@color/colorNegative"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/overlock_bold"/>
 
                 <Button
                     android:id="@+id/btnAddItem"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="+ More Item" />
+                    android:text="+ More Item"
+                    android:textAllCaps="false"
+                    android:background="@drawable/rounded_corner"
+                    android:backgroundTint="@android:color/white"
+                    android:textColor="#e6aa15"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/overlock_bold"/>
 
                 <Button
                     android:id="@+id/btnDone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="45dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Done" />
+                    android:text="Done"
+                    android:textAllCaps="false"
+                    android:background="@drawable/rounded_corner"
+                    android:backgroundTint="@color/colorPrimaryGreen"
+                    android:textColor="@color/colorGray"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/overlock_bold"/>
 
             </LinearLayout>
 
