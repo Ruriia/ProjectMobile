@@ -161,10 +161,6 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
         cbFragile = findViewById(R.id.cbFragile);
 
-        // Automated-fill form
-        //String authID = fbAuth.getUid().toString();
-        //edtNamaPengirim.setText("oy");
-
         final ProgressBar progressBar3 = findViewById(R.id.progressBar3);
 
         fbAuth = FirebaseAuth.getInstance();
