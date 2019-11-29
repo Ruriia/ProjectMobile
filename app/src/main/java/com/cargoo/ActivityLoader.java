@@ -26,14 +26,14 @@ public class ActivityLoader extends AppCompatActivity implements BottomNavigatio
         loadFragment(new HomeActivity());
 
         BottomNavigationView botnav = findViewById(R.id.bottom_navigation);
-        ImageButton track = findViewById(R.id.btnTrack);
-        track.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent trackpage = new Intent(getApplicationContext(), TrackLists.class);
-                startActivity(trackpage);
-            }
-        });
+//        ImageButton track = findViewById(R.id.btnTrack);
+//        track.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent trackpage = new Intent(getApplicationContext(), TrackLists.class);
+//                startActivity(trackpage);
+//            }
+//        });
 
         botnav.setOnNavigationItemSelectedListener(this);
     }
