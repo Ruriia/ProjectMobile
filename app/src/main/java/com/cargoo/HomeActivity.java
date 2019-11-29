@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,8 +32,9 @@ public class HomeActivity extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getContext(),ProductPage.class);
-                startActivity(i);
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.framefragment, new ProductPage());
+                fr.commit();
             }
         });
 
@@ -40,8 +42,9 @@ public class HomeActivity extends Fragment {
         btnCheckAllServices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),ServiceActivity.class);
-                startActivity(i);
+                FragmentTransaction fr = getFragmentManager().beginTransaction();
+                fr.replace(R.id.framefragment, new ServiceActivity());
+                fr.commit();
             }
         });
         return v;
