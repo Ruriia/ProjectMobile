@@ -177,17 +177,13 @@
 
                                     <TextView
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:fontFamily="@font/overlock_black"
-                                        android:text="Product's Name"
-                                        android:textSize="11sp" />
+                                        android:text="Coming Soon!"
+                                        android:textSize="11sp"
+                                        android:textAlignment="center"
+                                        />
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/overlock_bold"
-                                        android:text="Rp 2.300.000"
-                                        android:textSize="10sp" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -244,15 +240,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/overlock_black"
-                                        android:text="Product's Name"
-                                        android:textSize="11sp" />
+                                        android:text="Coming Soon!"
+                                        android:textSize="11sp"
+                                        android:textAlignment="center"/>
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/overlock_bold"
-                                        android:text="Rp 2.300.000"
-                                        android:textSize="10sp" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -309,15 +300,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/overlock_black"
-                                        android:text="Product's Name"
-                                        android:textSize="11sp" />
+                                        android:text="Coming Soon!"
+                                        android:textSize="11sp"
+                                        android:textAlignment="center"/>
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/overlock_bold"
-                                        android:text="Rp 2.300.000"
-                                        android:textSize="10sp" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -436,15 +422,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/overlock_black"
-                                        android:text="Product's Name"
-                                        android:textSize="11sp" />
+                                        android:text="Coming Soon!"
+                                        android:textSize="11sp"
+                                        android:textAlignment="center"/>
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/overlock_bold"
-                                        android:text="Rp 2.300.000"
-                                        android:textSize="10sp" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -501,15 +482,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/overlock_black"
-                                        android:text="Product's Name"
-                                        android:textSize="11sp" />
+                                        android:text="Coming Soon!"
+                                        android:textSize="11sp"
+                                        android:textAlignment="center"/>
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/overlock_bold"
-                                        android:text="Rp 2.300.000"
-                                        android:textSize="10sp" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -566,15 +542,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/overlock_black"
-                                        android:text="Product's Name"
-                                        android:textSize="11sp" />
+                                        android:text="Coming Soon!"
+                                        android:textSize="11sp"
+                                        android:textAlignment="center"/>
 
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/overlock_bold"
-                                        android:text="Rp 2.300.000"
-                                        android:textSize="10sp" />
                                 </LinearLayout>
 
                             </LinearLayout>
