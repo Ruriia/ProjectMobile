@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.accounts.Account;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -169,14 +171,15 @@ public class HistoryActivity extends AppCompatActivity {
 //                btnTrack = itemView.findViewById(R.id.btnTrack);
 //            }
 //        }
-        private Context mContext;
-
+        Context mContext;
         View mView;
+
         public OrderHolder(View itemView){
             super(itemView);
             mView = itemView;
             mContext = itemView.getContext();
         }
+
 
         public void setOrderID(String orderID){
             TextView txtOrderID = mView.findViewById(R.id.txtOrderID);
@@ -201,10 +204,9 @@ public class HistoryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent i = new Intent(mContext, TrackActivity.class);
-                        // put orderID extra here!
-
+                        i.putExtra("orderID", orderID);
                         mContext.startActivity(i);
-
+                        // Gak bisa finish() :(
                     }
                 });
             }
@@ -216,6 +218,7 @@ public class HistoryActivity extends AppCompatActivity {
                         Intent i = new Intent(mContext, activity_order_complete.class);
                         i.putExtra("orderID", orderID);
                         mContext.startActivity(i);
+                        // Gak bisa finish() :(
                     }
                 });
             }
@@ -224,4 +227,9 @@ public class HistoryActivity extends AppCompatActivity {
         public void setButton(String orderStatus){
         }
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        Move to AccountActivity fragment
+//    }
 }

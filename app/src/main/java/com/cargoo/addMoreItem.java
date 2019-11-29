@@ -3,6 +3,7 @@ package com.cargoo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Service;
 import android.content.ContentResolver;
@@ -28,6 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -62,7 +64,7 @@ public class addMoreItem extends AppCompatActivity {
     private int itemPrice = 0;
     private boolean isFragile = false;
 
-    DatabaseReference dbOrder, dbItems;
+    private DatabaseReference dbOrder, dbItems;
 
 
     private String uploadImage(){
@@ -292,17 +294,77 @@ public class addMoreItem extends AppCompatActivity {
 
             }
         });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(addMoreItem.this);
+                dialog.setTitle("Cancellation of Add Item");
+                dialog.setMessage("Are you sure to cancel adding new item?");
+
+                dialog.setPositiveButton("Yes, still keep my previous order.", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(addMoreItem.this, CheckoutActivity.class);
+                        intent.putExtra("orderID", orderID);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                dialog.setNegativeButton("I want to cancel my order entirely", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Do deletion of order and item collection here based on last orderID.
+
+                        // ----------- ORDER DELETION ---------------
+                        DatabaseReference qDeleteOrder = FirebaseDatabase.getInstance().getReference().child("Orders").child(orderID);
+                        qDeleteOrder.removeValue();
+
+                        // ----------- ITEMS DELETION ---------------
+                        Query qDeleteItem = FirebaseDatabase.getInstance().getReference().child("Items")
+                                .orderByChild("orderID")
+                                .equalTo(orderID);
+
+                        qDeleteItem.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                Toast.makeText(addMoreItem.this, "Your order has deleted.", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(addMoreItem.this, ActivityLoader.class);
+                                startActivity(intent);
+                                finish();
+
+                                for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                                    String itemID = postSnapshot.getKey();
+                                    dataSnapshot.getRef().child(itemID).removeValue();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                });
+
+                dialog.show();
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(addMoreItem.this);
         dialog.setTitle("Cancellation of Add Item");
         dialog.setMessage("Are you sure to cancel adding new item?");
+
         dialog.setPositiveButton("Yes, still keep my previous order.", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(addMoreItem.this, CheckoutActivity.class);
+                intent.putExtra("orderID", orderID);
                 startActivity(intent);
                 finish();
             }
@@ -313,8 +375,35 @@ public class addMoreItem extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Do deletion of order and item collection here based on last orderID.
 
-                Intent intent = new Intent(getApplicationContext(), ServiceActivity.class);
-                finish();
+                // ----------- ORDER DELETION ---------------
+                DatabaseReference qDeleteOrder = FirebaseDatabase.getInstance().getReference().child("Orders").child(orderID);
+                qDeleteOrder.removeValue();
+
+                // ----------- ITEMS DELETION ---------------
+                Query qDeleteItem = FirebaseDatabase.getInstance().getReference().child("Items")
+                        .orderByChild("orderID")
+                        .equalTo(orderID);
+
+                qDeleteItem.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        Toast.makeText(addMoreItem.this, "Your order has deleted.", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(addMoreItem.this, ActivityLoader.class);
+                        startActivity(intent);
+                        finish();
+
+                        for(DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                            String itemID = postSnapshot.getKey();
+                            dataSnapshot.getRef().child(itemID).removeValue();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

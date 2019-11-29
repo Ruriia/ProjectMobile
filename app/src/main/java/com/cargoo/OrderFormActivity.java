@@ -233,7 +233,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 String userID = fbAuth.getCurrentUser().getUid(); // Retrieve from FB Authentication
 
                 Date date = Calendar.getInstance().getTime();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 String orderDate = dateFormat.format(date);
 
                 String orderStatus = "Pending";
@@ -494,7 +494,7 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
 
 
 
-                // ---------------------- EVENT LISTENER --------------------------
+                // ---------------------- WRITE EVENT LISTENER --------------------------
                 ValueEventListener writeListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
