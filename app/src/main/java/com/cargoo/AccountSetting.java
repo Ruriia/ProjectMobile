@@ -4,19 +4,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -28,14 +35,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 public class AccountSetting extends AppCompatActivity {
     private static final int image_id = 1;
-    ImageView previewimage;
     Uri selectedImage;
+    private String temp;
 
     private EditText edtNamaPerusahaan, edtTelpPerusahaan, edtEmailPerusahaan, edtCurrPassword, edtNewPassword, edtAlamatPerusahaan,
             edtProvinsiPerusahaan, edtKotaPerusahaan, edtKecamatanPerusahaan, edtKodePosPerusahaan;
+    private ImageView profileimage;
+    private StorageReference storageReference;
 
     private Button btnSave, btnCancel;
 
@@ -48,8 +65,51 @@ public class AccountSetting extends AppCompatActivity {
 
     // Initiate Form Auto-Fill
     private String refNamaPerusahaan, refTelpPerusahaan, refEmailPerusahaan, refAlamatPerusahaan, refProvinsiPerusahaan, refKotaPerusahaan, 
-            refKecamatanPerusahaan, refKodePosPerusahaan;
-    
+            refKecamatanPerusahaan, refKodePosPerusahaan, refProfilePicture;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == image_id && resultCode == RESULT_OK && data != null) {
+            selectedImage = data.getData();
+            profileimage.setImageURI(selectedImage);
+        }
+    }
+
+    private String getExtension(Uri uri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mtm = MimeTypeMap.getSingleton();
+        return mtm.getExtensionFromMimeType(cr.getType(uri));
+    }
+
+    private String uploadImage(){
+        if(selectedImage != null) {
+            FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+            StorageReference mStorageRef = firebaseStorage.getReference();;
+            String path = "profileimage/" + UUID.randomUUID().toString() + "." + getExtension(selectedImage);
+            StorageReference ref = mStorageRef.child(path);
+            ref.putFile(selectedImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                }
+            }).addOnCanceledListener(new OnCanceledListener() {
+                @Override
+                public void onCanceled() {
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+            return path;
+        }else {
+            return null;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +136,7 @@ public class AccountSetting extends AppCompatActivity {
         edtKotaPerusahaan = findViewById(R.id.edtKotaPerusahaan);
         edtKecamatanPerusahaan = findViewById(R.id.edtKecamatanPerusahaan);
         edtKodePosPerusahaan = findViewById(R.id.edtKodePosPerusahaan);
+        profileimage = findViewById(R.id.profile_image);
 
         final ProgressBar pbAccSetting = findViewById(R.id.pbAccSetting);
 
@@ -90,7 +151,7 @@ public class AccountSetting extends AppCompatActivity {
         q1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                refProfilePicture = String.valueOf(dataSnapshot.child(fbUserId).child("profileimage").getValue(String.class));
                 refNamaPerusahaan = dataSnapshot.child(fbUserId).child("name").getValue(String.class);
                 refTelpPerusahaan = dataSnapshot.child(fbUserId).child("phone").getValue(String.class);
                 refEmailPerusahaan = dataSnapshot.child(fbUserId).child("email").getValue(String.class);
@@ -99,6 +160,8 @@ public class AccountSetting extends AppCompatActivity {
                 refKotaPerusahaan = dataSnapshot.child(fbUserId).child("address").child("city").getValue(String.class);
                 refKecamatanPerusahaan = dataSnapshot.child(fbUserId).child("address").child("district").getValue(String.class);
                 refKodePosPerusahaan = String.valueOf(dataSnapshot.child(fbUserId).child("address").child("zipcode").getValue(Integer.class));
+
+
 
                 edtNamaPerusahaan.setText(refNamaPerusahaan);
                 edtEmailPerusahaan.setText(refEmailPerusahaan);
@@ -109,6 +172,20 @@ public class AccountSetting extends AppCompatActivity {
                 edtKecamatanPerusahaan.setText(refKecamatanPerusahaan);
                 edtKodePosPerusahaan.setText(refKodePosPerusahaan);
 
+                try {
+                    final File file = File.createTempFile("image","jpg");
+                    storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://cargoo-d9aa1.appspot.com/").child(refProfilePicture);
+                    storageReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                            profileimage.setImageBitmap(bitmap);
+                        }
+                    });
+                }catch (IOException e){
+                    Toast.makeText(AccountSetting.this, e.getMessage(),Toast.LENGTH_LONG).show();
+                }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -116,11 +193,20 @@ public class AccountSetting extends AppCompatActivity {
             }
         });
 
+        Button changeprofile = findViewById(R.id.btnChangeProfile);
+        changeprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galery, image_id);
+            }
+        });
+
+
         btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 pbAccSetting.setVisibility(View.VISIBLE);
                 final String companyName = edtNamaPerusahaan.getText().toString();
                 final String email = edtEmailPerusahaan.getText().toString();
@@ -130,11 +216,12 @@ public class AccountSetting extends AppCompatActivity {
                 final String province = edtProvinsiPerusahaan.getText().toString();
                 final String city = edtKotaPerusahaan.getText().toString();
                 final String district = edtKecamatanPerusahaan.getText().toString();
+                refProfilePicture = uploadImage();
 
                 final String newPass = edtNewPassword.getText().toString();
                 final String currPass = edtCurrPassword.getText().toString();
 
-                Users userdata1 = new Users(fbUserId, companyName, phone, email);
+                Users userdata1 = new Users(fbUserId, companyName, phone, email, refProfilePicture);
                 Users userdata2 = new Users(address, province, city, district, zip); // For address
 
                 dbUsers.child(fbUserId).setValue(userdata1);

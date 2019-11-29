@@ -20,6 +20,8 @@
             android:paddingVertical="15dp"
             android:focusableInTouchMode="true">
 
+
+
             <LinearLayout
                 android:id="@+id/titleAccSetting"
                 android:layout_width="match_parent"
@@ -55,6 +57,27 @@
                     android:textSize="16sp" />
 
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/profile_image"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_centerHorizontal="true"
+                    app:civ_border_width="2dp"/>
+
+                <Button
+                    android:id="@+id/btnChangeProfile"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Picture"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="120dp"/>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/dataPerusahaan"

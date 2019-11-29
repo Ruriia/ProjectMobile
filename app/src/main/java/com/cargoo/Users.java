@@ -6,7 +6,7 @@ public class Users {
     private String phone;
     private String email;
     private String authID;
-    private String profileiamge;
+    private String profileimage;
 
 
     private String address;
@@ -24,7 +24,7 @@ public class Users {
         this.name = name;
         this.phone = phone;
         this.email = mail;
-        this.profileiamge = profile;
+        this.profileimage = profile;
     }
 
     public Users(String address, String province, String city, String district, int zip) {
@@ -34,6 +34,10 @@ public class Users {
         this.district = district;
         this.zipcode = zip;
     }
+
+    public String getProfileimage(){ return profileimage;}
+
+    public void setProfileimage(String profile) {this.profileimage = profile; }
 
     public String getUserID() {
         return userID;
