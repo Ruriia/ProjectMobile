@@ -29,22 +29,23 @@ import com.google.firebase.database.ValueEventListener;
 public class HomeActivity extends Fragment {
 
     Context context;
-
-    private FirebaseAuth fbAuth;
-    private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
-    private String fbUserId = fbUser.getUid();
-
     private TextView txtCompanyName;
     private String refCompanyName;
 
-    DatabaseReference dbUser;
-
-    private CardView cvDelivery;
-    private Button btnDelivery;
+    private FirebaseAuth fbAuth = FirebaseAuth.getInstance();
+    private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
+    private String fbUserId = fbUser.getUid();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
+
+        DatabaseReference dbUser;
+
+        CardView cvDelivery;
+        Button btnDelivery;
 
         View v =  inflater.inflate(R.layout.activity_home, container, false);
 

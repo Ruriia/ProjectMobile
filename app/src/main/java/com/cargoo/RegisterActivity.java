@@ -152,10 +152,10 @@ public class RegisterActivity extends AppCompatActivity {
                                     dbUsers.child(userID).setValue(userdata1);
                                     dbUsers.child(userID).child("address").setValue(userdata2);
 
-                                    fbAuth.getInstance().signOut();
+                                    // fbAuth.getInstance().signOut();
                                     progressBar.setVisibility(View.GONE);
                                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                    Toast.makeText(RegisterActivity.this, "Registrasion has succeed. Try to login.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RegisterActivity.this, "Registrasion has succeed.", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });

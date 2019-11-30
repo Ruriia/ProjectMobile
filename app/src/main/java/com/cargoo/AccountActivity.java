@@ -42,7 +42,7 @@ public class AccountActivity extends Fragment {
     private FirebaseAuth firebaseAuth;
     private TextView btnlogout;
 
-    private FirebaseAuth fbAuth = FirebaseAuth.getInstance();;
+    private FirebaseAuth fbAuth = FirebaseAuth.getInstance();
     private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
     private String fbUserId = fbUser.getUid();
     private String fbUserEmail = fbUser.getEmail();
