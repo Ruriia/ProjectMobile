@@ -100,9 +100,9 @@ public class AccountActivity extends Fragment {
             public void onClick(View v) {
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-                dialog.setTitle("Keluar?");
-                dialog.setMessage("Anda yakin?");
-                dialog.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                dialog.setTitle("Logout");
+                dialog.setMessage("Are you sure you want to leave?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -116,7 +116,7 @@ public class AccountActivity extends Fragment {
 
                     }
                 });
-                dialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 

@@ -5,9 +5,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -59,7 +61,7 @@ import java.util.UUID;
 
 public class OrderFormActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private static final int image_id = 1;
-    Button upload, btnDone;
+    private Button upload, btnDone, btnCancel;
     ImageView previewimage;
     Uri selectedImage;
 
@@ -527,6 +529,32 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
                 };
 
                 dbOrder.addValueEventListener(writeListener);
+            }
+        });
+
+        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(OrderFormActivity.this);
+                dialog.setTitle("Cancellation of Order");
+                dialog.setMessage("Are you sure to cancel the order?");
+
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+
+                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                dialog.show();
             }
         });
     }
