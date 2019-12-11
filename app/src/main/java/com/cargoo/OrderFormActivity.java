@@ -130,6 +130,13 @@ public class OrderFormActivity extends AppCompatActivity implements DatePickerDi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_form);
+
+        (findViewById(R.id.btnBack)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         upload = findViewById(R.id.uploadimage);
         previewimage = findViewById(R.id.previewimage);
 

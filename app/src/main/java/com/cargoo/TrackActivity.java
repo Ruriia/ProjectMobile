@@ -53,6 +53,12 @@ public class TrackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
 
+        (findViewById(R.id.btnBack)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Button back = findViewById(R.id.btnBack);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

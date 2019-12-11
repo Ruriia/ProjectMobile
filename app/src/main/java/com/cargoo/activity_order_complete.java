@@ -38,6 +38,13 @@ public class activity_order_complete extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_complete);
+        Button transaction = findViewById(R.id.btnTransactionDone);
+        transaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         Intent i = getIntent();
 //        refTotalPrice = i.getStringExtra("totalPrice");

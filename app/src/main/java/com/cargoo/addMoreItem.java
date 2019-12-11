@@ -106,6 +106,14 @@ public class addMoreItem extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_more_item);
 
+        Button back = findViewById(R.id.btnBack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         upload = findViewById(R.id.btnUploadimage);
         btnDone = findViewById(R.id.btnDone);
         btnAddItem = findViewById(R.id.btnAddItem);

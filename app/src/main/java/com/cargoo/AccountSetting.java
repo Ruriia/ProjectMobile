@@ -125,7 +125,13 @@ public class AccountSetting extends AppCompatActivity {
 //                startActivityForResult(galery, image_id);
 //            }
 //        });
-
+        Button back = findViewById(R.id.btnBack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         edtNamaPerusahaan = findViewById(R.id.edtNamaPerusahaan);
         edtTelpPerusahaan = findViewById(R.id.edtTelpPerusahaan);
         edtEmailPerusahaan = findViewById(R.id.edtEmailPerusahaan);

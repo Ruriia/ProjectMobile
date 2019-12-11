@@ -24,11 +24,8 @@
         <activity android:name=".ServiceActivity" />
         <activity android:name=".ActivityLoader" />
         <activity android:name=".TrackActivity" />
-        <activity android:name=".DetailActivity" />
         <activity android:name=".HistoryActivity" />
-        <activity android:name=".DetailProduct" />
         <activity android:name=".ProductPage" />
-        <activity android:name=".DetailTracking" />
         <activity
             android:name=".RegisterActivity"
             android:windowSoftInputMode="adjustResize" />
